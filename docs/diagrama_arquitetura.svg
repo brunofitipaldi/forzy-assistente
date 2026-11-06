@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="100%" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5664"/>
+    </marker>
+    <style>
+      .cam { font-size: 10.5px; font-weight: 700; fill: #1f4e79; letter-spacing: .5px; }
+      .tit { font-size: 11.5px; font-weight: 700; fill: #1d232b; }
+      .txt { font-size: 9.6px; fill: #3b4652; }
+      .peq { font-size: 8.8px; fill: #5b6470; }
+      .lin { stroke: #4a5664; stroke-width: 1.3; fill: none; marker-end: url(#seta); }
+      .bi { marker-start: url(#seta); }
+    </style>
+  </defs>
+
+  <!-- camada 1: fontes -->
+  <rect x="8" y="6" width="744" height="104" rx="8" fill="#f3f6fa" stroke="#d5dbe3"/>
+  <text x="20" y="24" class="cam">1 · FONTES DE DADOS (SIMULADAS)</text>
+  <rect x="24" y="34" width="224" height="64" rx="6" fill="#fff" stroke="#2a6fb0"/>
+  <text x="36" y="54" class="tit">Sensores — motor.db</text>
+  <text x="36" y="70" class="txt">SQLite · 20 motores × 1.500 leituras</text>
+  <text x="36" y="84" class="txt">rotação, vibração, temperatura, corrente</text>
+  <rect x="268" y="34" width="224" height="64" rx="6" fill="#fff" stroke="#2a6fb0"/>
+  <text x="280" y="54" class="tit">Histórico de manutenção</text>
+  <text x="280" y="70" class="txt">historico_manutencao.csv · 23 OS</text>
+  <text x="280" y="84" class="txt">tipo, falha, causa raiz, ação, datas</text>
+  <rect x="512" y="34" width="224" height="64" rx="6" fill="#fff" stroke="#2a6fb0"/>
+  <text x="524" y="54" class="tit">Documentação técnica</text>
+  <text x="524" y="70" class="txt">docs_tecnicos/ · 7 documentos .md</text>
+  <text x="524" y="84" class="txt">manual, POPs, plano, segurança, guia</text>
+
+  <!-- camada 2: processamento offline -->
+  <rect x="8" y="124" width="744" height="110" rx="8" fill="#f3f6fa" stroke="#d5dbe3"/>
+  
+  <rect x="24" y="152" width="224" height="72" rx="6" fill="#fff" stroke="#e08a2c"/>
+  <text x="36" y="171" class="tit">Baseline + Isolation Forest</text>
+  <text x="36" y="186" class="txt">src/anomalias.py (Sprint 3)</text>
+  <text x="36" y="200" class="txt">janela 10 leituras · limiar P95</text>
+  <text x="36" y="214" class="peq">→ resultados_anomalias.csv, ranking</text>
+  <rect x="268" y="152" width="224" height="72" rx="6" fill="#fff" stroke="#e08a2c"/>
+  <text x="280" y="171" class="tit">Classificador Random Forest</text>
+  <text x="280" y="186" class="txt">modelos/sprint2 (Sprint 2)</text>
+  <text x="280" y="200" class="txt">4 classes · aplicado à última leitura</text>
+  <text x="280" y="214" class="peq">→ classe, confiança, distribuição</text>
+  <rect x="512" y="152" width="224" height="72" rx="6" fill="#fff" stroke="#e08a2c"/>
+  <text x="524" y="171" class="tit">Indexação RAG</text>
+  <text x="524" y="186" class="txt">src/rag.py · chunking por seção</text>
+  <text x="524" y="200" class="txt">embeddinggemma + TF-IDF (58 trechos)</text>
+  <text x="524" y="214" class="peq">→ modelos/rag/indice.joblib</text>
+
+  <path class="lin" d="M136 98 V150"/>
+  <path class="lin" d="M200 98 V114 H360 V150"/>
+  <path class="lin" d="M420 98 V118 H590 V150"/>
+  <path class="lin" d="M624 98 V150"/>
+
+  <!-- camada 3: orquestrador -->
+  <rect x="8" y="248" width="744" height="170" rx="8" fill="#eef4fb" stroke="#2a6fb0" stroke-width="1.5"/>
+  <text x="20" y="266" class="cam">3 · ORQUESTRADOR (assistente.py)</text>
+  <g>
+    <rect x="24" y="278" width="168" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="34" y="296" class="tit">① Interpretação</text>
+    <text x="34" y="311" class="txt">ativo, período, intenção</text>
+    <text x="34" y="324" class="peq">MOT-xxx · “entre 15h e 16h”</text>
+    <rect x="208" y="278" width="168" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="218" y="296" class="tit">② Guardas</text>
+    <text x="218" y="311" class="txt">ativo inexistente, ambiguidade</text>
+    <text x="218" y="324" class="peq">resposta direta, sem LLM</text>
+    <rect x="392" y="278" width="168" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="402" y="296" class="tit">③ Contexto operacional</text>
+    <text x="402" y="311" class="txt">[D] sensores × baseline</text>
+    <text x="402" y="324" class="peq">[M] modelos · [H] OS · [R] ranking</text>
+    <rect x="576" y="278" width="160" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="586" y="296" class="tit">④ Recuperação</text>
+    <text x="586" y="311" class="txt">híbrida + RRF, filtros</text>
+    <text x="586" y="324" class="peq">ativo · tipo · período · cos ≥ 0,38</text>
+    <rect x="24" y="350" width="260" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="34" y="368" class="tit">⑤ Guarda de suficiência</text>
+    <text x="34" y="383" class="txt">sem dados e sem trechos relevantes →</text>
+    <text x="34" y="396" class="peq">“informação insuficiente”, sem LLM</text>
+    <rect x="300" y="350" width="436" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="310" y="368" class="tit">⑥ Prompt, geração e pós-processamento</text>
+    <text x="310" y="383" class="txt">instruções + contexto rotulado → LLM → aviso profissional,</text>
+    <text x="310" y="396" class="peq">fontes consultadas/citadas, log em logs/conversas.jsonl</text>
+  </g>
+  <path class="lin" d="M192 306 H206"/>
+  <path class="lin" d="M376 306 H390"/>
+  <path class="lin" d="M560 306 H574"/>
+  <path class="lin" d="M656 334 C 656 342, 160 338, 154 348"/>
+  <path class="lin" d="M284 378 H298"/>
+
+  <path class="lin" d="M136 224 V242 H440 V276"/>
+  <path class="lin" d="M380 224 V236 H470 V276"/>
+  <path class="lin" d="M624 224 V 276"/>
+  <path class="lin" d="M470 98 V113 H502 V256 H520 V276" stroke-dasharray="4 3"/>
+
+  <!-- camada 4: LLM e interface -->
+  <rect x="8" y="432" width="744" height="160" rx="8" fill="#f3f6fa" stroke="#d5dbe3"/>
+  <text x="20" y="450" class="cam">4 · GERAÇÃO E INTERFACE</text>
+  <rect x="24" y="462" width="260" height="70" rx="6" fill="#fff" stroke="#2e7d4f"/>
+  <text x="36" y="482" class="tit">LLM — src/llm.py</text>
+  <text x="36" y="498" class="txt">Ollama local: Llama 3.1 8B (padrão)</text>
+  <text x="36" y="512" class="txt">alternativa: Groq (LLM_BACKEND=groq)</text>
+  <text x="36" y="525" class="peq">temperatura 0,1 · até 450 tokens</text>
+  <rect x="300" y="462" width="250" height="70" rx="6" fill="#fff" stroke="#2e7d4f"/>
+  <text x="312" y="482" class="tit">Interface — app.py (Streamlit)</text>
+  <text x="312" y="498" class="txt">chat com fontes consultadas</text>
+  <text x="312" y="512" class="txt">painel da frota (ranking, séries)</text>
+  <text x="312" y="525" class="peq">CLI: python src/assistente.py</text>
+  <rect x="566" y="462" width="170" height="70" rx="6" fill="#fff" stroke="#2e7d4f"/>
+  <text x="578" y="482" class="tit">Usuário</text>
+  <text x="578" y="498" class="txt">técnico, planejador,</text>
+  <text x="578" y="512" class="txt">engenheiro de confiabilidade</text>
+  <path class="lin bi" d="M230 460 V432 H340 V408"/>
+  
+  <text x="348" y="430" class="peq">contexto + pergunta / resposta</text>
+  <path class="lin" d="M566 497 H552"/>
+  <path class="lin" d="M552 510 H564"/>
+  <path class="lin bi" d="M470 460 V446 H620 V408"/>
+  <text x="628" y="448" class="peq">pergunta / resposta</text>
+  <text x="24" y="560" class="peq">Fluxo: os dados (1) são processados em lote pelos modelos e pela indexação (2). A cada pergunta, o orquestrador (3) monta o contexto com</text>
+  <text x="24" y="574" class="peq">dados, saídas dos modelos e trechos recuperados, e o LLM (4) redige a resposta exibida ao usuário com as fontes. Linha tracejada: as OS também</text>
+  <text x="24" y="588" class="peq">são lidas diretamente pelo orquestrador para o histórico estruturado do ativo.</text>
+  <rect x="16" y="131" width="322" height="15" fill="#f3f6fa"/>
+  <text x="20" y="142" class="cam">2 · MODELOS E INDEXAÇÃO (PROCESSAMENTO EM LOTE)</text>
+</svg>

@@ -1,0 +1,1062 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Documentação Final — Sprint 4 — Grupo 4M</title>
+<style>
+@page { size: A4; margin: 20mm 18mm 20mm 18mm; }
+:root { --azul:#1f4e79; --azul2:#2a6fb0; --cinza:#5b6470; --linha:#d5dbe3; --fundo:#f3f6fa; --verm:#b03a2e; --verde:#2e7d4f; --amar:#9a6a00; }
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Calibri, Arial, sans-serif; font-size: 10.3pt; line-height: 1.45; color:#1d232b; margin:0; background:#fff; }
+h1 { font-size: 17pt; color: var(--azul); border-bottom: 2px solid var(--azul); padding-bottom: 4px; margin: 0 0 10px; page-break-before: always; }
+h2 { font-size: 12.5pt; color: var(--azul); margin: 16px 0 6px; page-break-after: avoid; }
+h3 { font-size: 10.8pt; color: #26303b; margin: 12px 0 4px; page-break-after: avoid; }
+p { margin: 4px 0 7px; text-align: justify; }
+ul, ol { margin: 3px 0 8px; padding-left: 20px; } li { margin: 2px 0; }
+table { border-collapse: collapse; width: 100%; margin: 6px 0 10px; font-size: 9pt; page-break-inside: avoid; }
+th { background: var(--azul); color: #fff; text-align: left; padding: 4px 6px; font-weight: 600; }
+td { border-bottom: 1px solid var(--linha); padding: 3.5px 6px; vertical-align: top; }
+tr:nth-child(even) td { background: #f8fafc; }
+code, .mono { font-family: Consolas, "Cascadia Mono", monospace; font-size: 8.8pt; background: #eef2f7; padding: 0 3px; border-radius: 3px; }
+pre { font-family: Consolas, monospace; font-size: 8.4pt; background: #f1f4f8; border: 1px solid var(--linha); border-radius: 4px; padding: 7px 9px; white-space: pre-wrap; word-break: break-word; margin: 5px 0 9px; page-break-inside: avoid; }
+figure { margin: 8px 0 12px; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; border: 1px solid var(--linha); border-radius: 3px; }
+figcaption { font-size: 8.6pt; color: var(--cinza); margin-top: 3px; }
+.nota { background: var(--fundo); border-left: 4px solid var(--azul2); padding: 6px 10px; margin: 8px 0; font-size: 9.4pt; page-break-inside: avoid; }
+.alerta { background: #fdf4e3; border-left: 4px solid var(--amar); padding: 6px 10px; margin: 8px 0; font-size: 9.4pt; page-break-inside: avoid; }
+.tag { display:inline-block; padding:0 6px; border-radius:9px; font-size:8.2pt; font-weight:600; }
+.ok { background:#e2f3e8; color:var(--verde);} .parc { background:#fdf0d5; color:var(--amar);} .nao { background:#f8e1de; color:var(--verm);}
+.capa { height: 255mm; display:flex; flex-direction:column; justify-content:space-between; padding: 10mm 4mm; }
+.capa .topo { font-size: 11pt; letter-spacing: 2px; color: var(--cinza); font-weight:600; }
+.capa h0 { display:block; font-size: 26pt; font-weight: 700; color: var(--azul); line-height:1.15; }
+.capa .sub { font-size: 13pt; color: #33404e; margin-top: 8px; }
+.capa .faixa { height: 6px; background: linear-gradient(90deg, var(--azul), var(--azul2)); width: 120px; margin: 18px 0; }
+.capa table td { border:none; padding: 2px 0; font-size: 10.5pt; background:none !important; }
+.sumario { columns: 1; font-size: 10pt; } .sumario li { margin: 3px 0; }
+.dupla { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cenario { border:1px solid var(--linha); border-radius:5px; padding: 8px 10px; margin: 10px 0; page-break-inside: avoid; }
+.cenario h3 { margin-top: 0; }
+.resp { background:#fbfcfe; border:1px dashed #b9c4d2; border-radius:4px; padding:6px 9px; font-size: 9pt; white-space: pre-wrap; }
+.pequeno { font-size: 8.6pt; color: var(--cinza); }
+</style>
+</head>
+<body>
+
+<!-- ============================== CAPA ============================== -->
+<section class="capa">
+  <div>
+    <div class="topo">FIAP × FORZY · CHALLENGE IA</div>
+    <div class="faixa"></div>
+    <h0>Assistente de Manutenção Preditiva com IA Generativa</h0>
+    <div class="sub">Sprint 4 — Generative IA &amp; Advanced Net<br>Documentação Final da Solução</div>
+    <p style="margin-top:22px;max-width:150mm;color:#33404e;text-align:left">
+      Detecção de anomalias, classificação de falhas e assistente conversacional com RAG
+      (Retrieval-Augmented Generation) para apoio ao troubleshooting de motores elétricos.</p>
+  </div>
+  <div>
+    <p style="font-weight:600;color:var(--azul);margin-bottom:4px">Grupo 4M</p>
+    <table>
+      <tr><td>Arthur Pedreca de Almeida Vasco</td><td>RM 565215</td></tr>
+      <tr><td>Bruno Lanchariche Fitipaldi Lopes</td><td>RM 564129</td></tr>
+      <tr><td>Gustavo Civita Gonçalves</td><td>RM 561932</td></tr>
+      <tr><td>Rafael de Paiva Ramos</td><td>RM 563978</td></tr>
+      <tr><td>Thiago Santana Danyluk</td><td>RM 562286</td></tr>
+    </table>
+    <p class="pequeno" style="margin-top:14px">Novembro de 2026 · Versão 1.0 · Repositório: https://github.com/brunofitipaldi/forzy-assistente</p>
+  </div>
+</section>
+
+<!-- ============================== SUMÁRIO ============================== -->
+<h1>Sumário</h1>
+<ol class="sumario">
+  <li>Visão geral da solução</li>
+  <li>Documentação dos dados</li>
+  <li>Arquitetura da solução</li>
+  <li>Documentação dos modelos de inteligência artificial</li>
+  <li>Documentação da arquitetura RAG</li>
+  <li>Documentação funcional do assistente</li>
+  <li>Testes e resultados</li>
+  <li>Manual de instalação e execução</li>
+  <li>Limitações e continuidade</li>
+  <li>Organização da entrega final</li>
+</ol>
+<div class="nota"><b>Como ler este documento.</b> Cada funcionalidade é marcada como
+<span class="tag ok">Implementado</span>, <span class="tag parc">Parcial</span> ou
+<span class="tag nao">Futuro</span>. Todos os números apresentados foram obtidos executando o código do
+repositório nesta versão; os comandos que reproduzem cada resultado estão indicados no texto e na seção 8.</div>
+
+<div class="alerta"><b>Dados simulados.</b> A Forzy não disponibilizou histórico real de sensores até esta sprint.
+Por isso, <b>as leituras de sensores, os documentos técnicos e as ordens de serviço usados nesta solução são
+simulados</b> e foram produzidos pelo grupo. Os resultados validam o método e a arquitetura, e não representam
+desempenho em produção. Todo item simulado está identificado com <code>origem: SIMULADO</code>.</div>
+
+<h2>Resumo executivo</h2>
+<p>O projeto entrega um assistente conversacional que ajuda técnicos e planejadores de manutenção a responder
+três perguntas: <i>o ativo está fora do normal?</i>, <i>qual falha é mais provável?</i> e <i>o que devo
+verificar?</i>. Para isso, combina três camadas construídas ao longo das sprints: um classificador de falhas
+conhecidas (Random Forest, Sprint 2), um baseline operacional com detector de anomalias (Isolation Forest
+temporal, Sprint 3) e, nesta sprint, uma arquitetura RAG que recupera trechos de manuais, procedimentos e
+ordens de serviço e os entrega, junto com os dados dos sensores e as saídas dos modelos, a um modelo de
+linguagem executado localmente (Llama 3.1 8B via Ollama).</p>
+<table>
+  <tr><th>Indicador</th><th>Resultado</th><th>Como foi medido</th></tr>
+  <tr><td>Detector de anomalias</td><td>F1 0,947 · ROC-AUC 0,982 · falso alerta 4,24%</td><td>9.000 leituras de teste (30% finais de cada motor)</td></tr>
+  <tr><td>Classificador de falhas</td><td>F1 macro 0,728 · acurácia 0,823</td><td>mesmo período de teste, 4 classes</td></tr>
+  <tr><td>Recuperação de documentos</td><td>Hit@3 0,812 · MRR 0,719 · 6/6 perguntas fora do escopo bloqueadas</td><td>22 perguntas rotuladas</td></tr>
+  <tr><td>Cenários ponta a ponta</td><td>9 de 9 aprovados nas verificações automáticas; 7 de 9 corretos na avaliação manual</td><td>9 cenários com verificação automática</td></tr>
+</table>
+
+<!-- ============================== 1 ============================== -->
+<h1>1. Visão geral da solução</h1>
+<h2>1.1 Problema</h2>
+<p>Paradas não planejadas de motores elétricos interrompem a produção, geram custos de reparo emergencial e
+riscos de segurança. Os sinais de degradação (aumento de vibração, aquecimento, aumento de corrente e queda de
+rotação) costumam aparecer horas antes da falha, mas ficam dispersos entre a telemetria dos sensores, o
+histórico de manutenção e a documentação técnica. Na prática, o técnico precisa consultar várias fontes e
+interpretar gráficos para decidir o que inspecionar primeiro.</p>
+<p>A solução reúne essas fontes em um único ponto de consulta em linguagem natural. O assistente identifica
+desvios em relação ao comportamento normal, sugere a falha conhecida mais compatível, recupera os
+procedimentos de troubleshooting pertinentes e apresenta as fontes usadas, deixando a decisão final com o
+profissional responsável.</p>
+
+<h2>1.2 Público-alvo</h2>
+<table>
+  <tr><th>Perfil</th><th>Uso principal</th></tr>
+  <tr><td>Técnico / operador de manutenção</td><td>Consultar a situação de um motor, entender o alerta e seguir o procedimento de verificação</td></tr>
+  <tr><td>Planejador (PCM)</td><td>Priorizar inspeções pelo ranking da frota e consultar o histórico de ordens de serviço</td></tr>
+  <tr><td>Engenheiro de confiabilidade</td><td>Investigar padrões de falha, avaliar a qualidade dos modelos e recalibrar limiares</td></tr>
+  <tr><td>Equipe Forzy</td><td>Integrar a solução à plataforma de monitoramento de ativos e evoluí-la com dados reais</td></tr>
+</table>
+
+<h2>1.3 Benefícios esperados para a Forzy</h2>
+<ul>
+  <li><b>Detecção antecipada:</b> no MOT-008, a partir das 16:05:30 o detector sinalizou alerta em 528 das 529 leituras seguintes, cerca de 26 minutos após o início da rampa de degradação simulada (15:39), quando a vibração ainda estava perto de 2,5 mm/s, no limite superior da faixa normal, e mais de quatro horas antes do pico de 8,1 mm/s (Figura 4.3).</li>
+  <li><b>Priorização objetiva:</b> o ranking por taxa de alertas e severidade orienta qual ativo inspecionar primeiro.</li>
+  <li><b>Menor tempo de diagnóstico:</b> dados, modelos, histórico e procedimento aparecem em uma única resposta, com citação das fontes.</li>
+  <li><b>Rastreabilidade e confiança:</b> cada resposta mostra os trechos consultados e registra a interação em log.</li>
+  <li><b>Privacidade e custo:</b> o LLM e os embeddings rodam localmente (Ollama), sem envio de dados operacionais para a nuvem e sem custo por consulta.</li>
+</ul>
+
+<h2>1.4 Escopo e funcionalidades entregues</h2>
+<table>
+  <tr><th style="width:42%">Funcionalidade</th><th style="width:14%">Status</th><th>Observação</th></tr>
+  <tr><td>Classificação de falhas conhecidas (4 classes)</td><td><span class="tag ok">Implementado</span></td><td>Random Forest da Sprint 2, reavaliado nesta versão</td></tr>
+  <tr><td>Baseline operacional e detecção de anomalias</td><td><span class="tag ok">Implementado</span></td><td>Isolation Forest temporal da Sprint 3, consolidado em <code>src/anomalias.py</code></td></tr>
+  <tr><td>Severidade, persistência e sensor de maior desvio</td><td><span class="tag ok">Implementado</span></td><td>Cortes P95/P97/P99 e sequências consecutivas de alertas</td></tr>
+  <tr><td>RAG com filtros por ativo e período</td><td><span class="tag ok">Implementado</span></td><td>Busca híbrida (embeddings + TF-IDF) com fusão RRF</td></tr>
+  <tr><td>Assistente conversacional com citação de fontes</td><td><span class="tag ok">Implementado</span></td><td>Interface Streamlit e linha de comando</td></tr>
+  <tr><td>Tratamento de ambiguidade, falta de informação e segurança</td><td><span class="tag ok">Implementado</span></td><td>Guardas determinísticas e aviso obrigatório</td></tr>
+  <tr><td>Painel da frota (ranking e séries temporais)</td><td><span class="tag ok">Implementado</span></td><td>Aba “Painel da frota” no Streamlit</td></tr>
+  <tr><td>Memória de conversa</td><td><span class="tag parc">Parcial</span></td><td>Lembra apenas o último ativo citado (“e esse motor?”)</td></tr>
+  <tr><td>Pontuação em tempo real (streaming)</td><td><span class="tag nao">Futuro</span></td><td>Hoje as leituras são pontuadas em lote pelo pipeline</td></tr>
+  <tr><td>Estimativa de vida útil remanescente (RUL)</td><td><span class="tag nao">Futuro</span></td><td>Prevista na Sprint 1; depende de histórico real até a falha</td></tr>
+  <tr><td>Integração com dados reais, ERP e SCADA da Forzy</td><td><span class="tag nao">Futuro</span></td><td>Arquitetura preparada para troca da fonte de dados</td></tr>
+</table>
+
+<h2>1.5 Casos de uso principais</h2>
+<table>
+  <tr><th>ID</th><th>Caso de uso</th><th>Exemplo de pergunta</th></tr>
+  <tr><td>UC1</td><td>Consultar a situação atual de um ativo</td><td>“Como está o MOT-008 agora?”</td></tr>
+  <tr><td>UC2</td><td>Entender um alerta e a falha provável</td><td>“O MOT-011 está esquentando? O que pode ser?”</td></tr>
+  <tr><td>UC3</td><td>Obter o procedimento de troubleshooting</td><td>“O que devo verificar segundo o procedimento?”</td></tr>
+  <tr><td>UC4</td><td>Consultar o histórico de manutenção</td><td>“O MOT-001 teve manutenção em março?”</td></tr>
+  <tr><td>UC5</td><td>Priorizar inspeções da frota</td><td>“Quais motores estão mais críticos agora?”</td></tr>
+  <tr><td>UC6</td><td>Consultar um período específico</td><td>“Como estava a vibração do MOT-019 entre 15h e 16h?”</td></tr>
+</table>
+
+<h2>1.6 Evolução ao longo das sprints</h2>
+<table>
+  <tr><th>Sprint</th><th>Entrega</th><th>Situação nesta versão</th></tr>
+  <tr><td>1</td><td>Mapeamento de fontes e desenho dos pipelines de ML/DL e RAG</td><td>Base conceitual; as escolhas simplificadas na implementação estão justificadas nas seções 2, 5 e 9</td></tr>
+  <tr><td>2</td><td>Base sintética <code>motor.db</code>, EDA, Random Forest e agente com <i>function calling</i> (Groq)</td><td>Modelo e base reutilizados; o agente original foi mantido em <code>src/agente_sprint2_legado.py</code></td></tr>
+  <tr><td>3</td><td>Baseline e detector de anomalias (Isolation Forest temporal)</td><td>Pipeline consolidado em <code>src/anomalias.py</code>; a reexecução reproduziu as métricas do relatório da Sprint 3</td></tr>
+  <tr><td>4</td><td>Base documental, RAG, assistente integrado, interface, testes e esta documentação</td><td>Entregue nesta sprint</td></tr>
+</table>
+
+<!-- ============================== 2 ============================== -->
+<h1>2. Documentação dos dados</h1>
+<h2>2.1 Fontes utilizadas</h2>
+<table>
+  <tr><th>Fonte</th><th>Arquivo</th><th>Formato</th><th>Período</th><th>Volume</th><th>Origem</th></tr>
+  <tr><td>Telemetria dos sensores</td><td><code>dados/motor.db</code> (tabela <code>leituras</code>)</td><td>SQLite</td><td>01/05/2026, 08:00:00 a 20:29:30</td><td>30.000 leituras (20 × 1.500)</td><td>SIMULADO (<code>gerar_banco.py</code>, seed 42)</td></tr>
+  <tr><td>Cadastro de ativos</td><td><code>motor.db</code> (tabela <code>motores</code>)</td><td>SQLite</td><td>—</td><td>20 motores</td><td>SIMULADO</td></tr>
+  <tr><td>Registro de falhas</td><td><code>motor.db</code> (<code>tipos_falha</code> e coluna <code>falha</code>)</td><td>SQLite</td><td>mesmo da telemetria</td><td>4 classes, rótulo por leitura</td><td>SIMULADO</td></tr>
+  <tr><td>Histórico de manutenção</td><td><code>dados/historico_manutencao.csv</code></td><td>CSV</td><td>09/01/2026 a 28/04/2026</td><td>23 ordens de serviço</td><td>SIMULADO</td></tr>
+  <tr><td>Documentação técnica</td><td><code>docs_tecnicos/DOC-001…007.md</code></td><td>Markdown com metadados</td><td>versão 1.0</td><td>7 documentos, 35 trechos</td><td>SIMULADO (DOC-007 derivado do projeto)</td></tr>
+  <tr><td>Saídas dos modelos</td><td><code>modelos/sprint3/resultados_anomalias.csv</code></td><td>CSV</td><td>mesmo da telemetria</td><td>30.000 linhas</td><td>Gerado pelo pipeline</td></tr>
+</table>
+
+<h2>2.2 Identificação dos ativos</h2>
+<p>Os 20 ativos são motores de indução de 3 CV, 2 polos, IP55, do mesmo fabricante e modelo, identificados
+pelas tags <code>MOT-001</code> a <code>MOT-020</code> (coluna <code>tag</code>, chave <code>motor_id</code>).
+A mesma tag é usada nos sensores, nas ordens de serviço, nos metadados dos documentos e nas perguntas ao
+assistente, o que permite filtrar todas as fontes por ativo.</p>
+
+<h2>2.3 Variáveis e unidades</h2>
+<table>
+  <tr><th>Variável</th><th>Unidade</th><th>Nominal</th><th>Faixa normal (P1–P99 do baseline)</th><th>Descrição</th></tr>
+  <tr><td><code>rotacao</code></td><td>RPM</td><td>3600</td><td>3542,0 – 3658,3</td><td>Velocidade do eixo</td></tr>
+  <tr><td><code>vibracao</code></td><td>mm/s (RMS)</td><td>1,8</td><td>1,12 – 2,50</td><td>Vibração na carcaça</td></tr>
+  <tr><td><code>temperatura</code></td><td>°C</td><td>65</td><td>57,92 – 71,99</td><td>Temperatura de carcaça</td></tr>
+  <tr><td><code>corrente</code></td><td>A</td><td>11,5</td><td>10,10 – 12,91</td><td>Corrente de alimentação</td></tr>
+  <tr><td><code>timestamp</code></td><td>ISO 8601</td><td>—</td><td>intervalo de 30 s</td><td>Data e hora da leitura</td></tr>
+  <tr><td><code>falha</code></td><td>código</td><td>—</td><td>0 Normal · 1 Desbalanceamento · 2 Superaquecimento · 3 Falha Mecânica</td><td>Rótulo por leitura (gabarito da simulação)</td></tr>
+</table>
+<p>Distribuição dos rótulos: 24.890 leituras normais (82,97%), 2.089 de desbalanceamento (6,96%), 1.977 de
+superaquecimento (6,59%) e 1.044 de falha mecânica (3,48%). Dez motores operam normalmente durante todo o
+período; os outros dez desenvolvem uma falha com rampa progressiva que começa entre 60% e 80% da série
+(por exemplo, MOT-008 com falha mecânica a partir das 15:39:30).</p>
+
+<h2>2.4 Ordens de serviço e documentos técnicos</h2>
+<p>O histórico de manutenção tem as colunas <code>os_id, tag, data_abertura, data_fechamento, tipo</code>
+(preventiva, corretiva ou inspeção), <code>falha_relacionada, descricao, causa_raiz, acao, horas_parada,
+status, origem</code>. As ordens foram escritas para serem coerentes com o modo de falha simulado de cada
+motor (por exemplo, troca de rolamento no MOT-008 e problema de tensão no MOT-011).</p>
+<table>
+  <tr><th>Documento</th><th>Tipo</th><th>Conteúdo</th></tr>
+  <tr><td>DOC-001</td><td>manual</td><td>Identificação, valores nominais, limites de alarme, instalação, rolamentos, relação sensor × falha</td></tr>
+  <tr><td>DOC-002</td><td>procedimento</td><td>POP de troubleshooting de desbalanceamento e vibração elevada</td></tr>
+  <tr><td>DOC-003</td><td>procedimento</td><td>POP de superaquecimento e sobrecorrente</td></tr>
+  <tr><td>DOC-004</td><td>procedimento</td><td>POP de falha mecânica (rolamentos, desalinhamento, roçamento)</td></tr>
+  <tr><td>DOC-005</td><td>plano</td><td>Plano de manutenção preventiva e uso do monitoramento preditivo</td></tr>
+  <tr><td>DOC-006</td><td>segurança</td><td>Requisitos de segurança (NR-10/NR-12, bloqueio, situações de parada imediata)</td></tr>
+  <tr><td>DOC-007</td><td>guia</td><td>Interpretação de percentil, severidade, persistência e saídas dos modelos</td></tr>
+</table>
+<p>Os documentos são simulados e <b>não reproduzem manuais oficiais de fabricantes</b>. Os limites de alarme
+foram definidos de forma coerente com a base sintética, para que o assistente possa cruzar leituras e
+procedimentos.</p>
+
+<h2>2.5 Tratamentos realizados</h2>
+<ul>
+  <li><b>Qualidade:</b> verificação de ausentes (zero) e de duplicidades por motor/timestamp (zero).</li>
+  <li><b>Ordenação temporal</b> por motor e timestamp antes de qualquer janela ou divisão.</li>
+  <li><b>Divisão cronológica</b> por motor, sem embaralhamento, para evitar vazamento do futuro (detalhes na seção 4).</li>
+  <li><b>Padronização</b> com <code>StandardScaler</code> ajustado somente no treino.</li>
+  <li><b>Features temporais causais</b>: média, desvio e variação em janela das últimas 10 leituras (5 minutos).</li>
+  <li><b>Outliers</b> não foram removidos, porque representam justamente o fenômeno procurado.</li>
+  <li><b>Categorias</b> <code>fabricante</code> e <code>modelo</code> descartadas por terem variância zero.</li>
+  <li><b>Documentos:</b> extração de metadados do cabeçalho, divisão por seção, descarte de trechos curtos e do aviso de simulação (seção 5).</li>
+</ul>
+
+<h2>2.6 Limitações dos dados</h2>
+<ul>
+  <li>Todos os dados são simulados; o comportamento real tem variações de carga, partidas, ambiente e ruído de sensor que não estão presentes.</li>
+  <li>Há apenas um dia de operação (12,5 h por motor) e um único modelo de motor.</li>
+  <li>As falhas seguem rampas lineares conhecidas, o que torna a detecção mais fácil do que na operação real.</li>
+  <li>O histórico de OS é anterior ao período dos sensores, então não há OS registrando as falhas de 01/05.</li>
+  <li>Em relação ao planejado na Sprint 1 (SCADA, ERP, ~50 variáveis por equipamento, 200 a 400 documentos), a base implementada é muito menor; a substituição pelas fontes reais é a principal ação de continuidade (seção 9).</li>
+</ul>
+
+<!-- ============================== 3 ============================== -->
+<h1>3. Arquitetura da solução</h1>
+<figure>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 600" width="100%" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a5664"/>
+    </marker>
+    <style>
+      .cam { font-size: 10.5px; font-weight: 700; fill: #1f4e79; letter-spacing: .5px; }
+      .tit { font-size: 11.5px; font-weight: 700; fill: #1d232b; }
+      .txt { font-size: 9.6px; fill: #3b4652; }
+      .peq { font-size: 8.8px; fill: #5b6470; }
+      .lin { stroke: #4a5664; stroke-width: 1.3; fill: none; marker-end: url(#seta); }
+      .bi { marker-start: url(#seta); }
+    </style>
+  </defs>
+
+  <!-- camada 1: fontes -->
+  <rect x="8" y="6" width="744" height="104" rx="8" fill="#f3f6fa" stroke="#d5dbe3"/>
+  <text x="20" y="24" class="cam">1 · FONTES DE DADOS (SIMULADAS)</text>
+  <rect x="24" y="34" width="224" height="64" rx="6" fill="#fff" stroke="#2a6fb0"/>
+  <text x="36" y="54" class="tit">Sensores — motor.db</text>
+  <text x="36" y="70" class="txt">SQLite · 20 motores × 1.500 leituras</text>
+  <text x="36" y="84" class="txt">rotação, vibração, temperatura, corrente</text>
+  <rect x="268" y="34" width="224" height="64" rx="6" fill="#fff" stroke="#2a6fb0"/>
+  <text x="280" y="54" class="tit">Histórico de manutenção</text>
+  <text x="280" y="70" class="txt">historico_manutencao.csv · 23 OS</text>
+  <text x="280" y="84" class="txt">tipo, falha, causa raiz, ação, datas</text>
+  <rect x="512" y="34" width="224" height="64" rx="6" fill="#fff" stroke="#2a6fb0"/>
+  <text x="524" y="54" class="tit">Documentação técnica</text>
+  <text x="524" y="70" class="txt">docs_tecnicos/ · 7 documentos .md</text>
+  <text x="524" y="84" class="txt">manual, POPs, plano, segurança, guia</text>
+
+  <!-- camada 2: processamento offline -->
+  <rect x="8" y="124" width="744" height="110" rx="8" fill="#f3f6fa" stroke="#d5dbe3"/>
+  
+  <rect x="24" y="152" width="224" height="72" rx="6" fill="#fff" stroke="#e08a2c"/>
+  <text x="36" y="171" class="tit">Baseline + Isolation Forest</text>
+  <text x="36" y="186" class="txt">src/anomalias.py (Sprint 3)</text>
+  <text x="36" y="200" class="txt">janela 10 leituras · limiar P95</text>
+  <text x="36" y="214" class="peq">→ resultados_anomalias.csv, ranking</text>
+  <rect x="268" y="152" width="224" height="72" rx="6" fill="#fff" stroke="#e08a2c"/>
+  <text x="280" y="171" class="tit">Classificador Random Forest</text>
+  <text x="280" y="186" class="txt">modelos/sprint2 (Sprint 2)</text>
+  <text x="280" y="200" class="txt">4 classes · aplicado à última leitura</text>
+  <text x="280" y="214" class="peq">→ classe, confiança, distribuição</text>
+  <rect x="512" y="152" width="224" height="72" rx="6" fill="#fff" stroke="#e08a2c"/>
+  <text x="524" y="171" class="tit">Indexação RAG</text>
+  <text x="524" y="186" class="txt">src/rag.py · chunking por seção</text>
+  <text x="524" y="200" class="txt">embeddinggemma + TF-IDF (58 trechos)</text>
+  <text x="524" y="214" class="peq">→ modelos/rag/indice.joblib</text>
+
+  <path class="lin" d="M136 98 V150"/>
+  <path class="lin" d="M200 98 V114 H360 V150"/>
+  <path class="lin" d="M420 98 V118 H590 V150"/>
+  <path class="lin" d="M624 98 V150"/>
+
+  <!-- camada 3: orquestrador -->
+  <rect x="8" y="248" width="744" height="170" rx="8" fill="#eef4fb" stroke="#2a6fb0" stroke-width="1.5"/>
+  <text x="20" y="266" class="cam">3 · ORQUESTRADOR (assistente.py)</text>
+  <g>
+    <rect x="24" y="278" width="168" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="34" y="296" class="tit">① Interpretação</text>
+    <text x="34" y="311" class="txt">ativo, período, intenção</text>
+    <text x="34" y="324" class="peq">MOT-xxx · “entre 15h e 16h”</text>
+    <rect x="208" y="278" width="168" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="218" y="296" class="tit">② Guardas</text>
+    <text x="218" y="311" class="txt">ativo inexistente, ambiguidade</text>
+    <text x="218" y="324" class="peq">resposta direta, sem LLM</text>
+    <rect x="392" y="278" width="168" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="402" y="296" class="tit">③ Contexto operacional</text>
+    <text x="402" y="311" class="txt">[D] sensores × baseline</text>
+    <text x="402" y="324" class="peq">[M] modelos · [H] OS · [R] ranking</text>
+    <rect x="576" y="278" width="160" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="586" y="296" class="tit">④ Recuperação</text>
+    <text x="586" y="311" class="txt">híbrida + RRF, filtros</text>
+    <text x="586" y="324" class="peq">ativo · tipo · período · cos ≥ 0,38</text>
+    <rect x="24" y="350" width="260" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="34" y="368" class="tit">⑤ Guarda de suficiência</text>
+    <text x="34" y="383" class="txt">sem dados e sem trechos relevantes →</text>
+    <text x="34" y="396" class="peq">“informação insuficiente”, sem LLM</text>
+    <rect x="300" y="350" width="436" height="56" rx="6" fill="#fff" stroke="#9fb6cf"/>
+    <text x="310" y="368" class="tit">⑥ Prompt, geração e pós-processamento</text>
+    <text x="310" y="383" class="txt">instruções + contexto rotulado → LLM → aviso profissional,</text>
+    <text x="310" y="396" class="peq">fontes consultadas/citadas, log em logs/conversas.jsonl</text>
+  </g>
+  <path class="lin" d="M192 306 H206"/>
+  <path class="lin" d="M376 306 H390"/>
+  <path class="lin" d="M560 306 H574"/>
+  <path class="lin" d="M656 334 C 656 342, 160 338, 154 348"/>
+  <path class="lin" d="M284 378 H298"/>
+
+  <path class="lin" d="M136 224 V242 H440 V276"/>
+  <path class="lin" d="M380 224 V236 H470 V276"/>
+  <path class="lin" d="M624 224 V 276"/>
+  <path class="lin" d="M470 98 V113 H502 V256 H520 V276" stroke-dasharray="4 3"/>
+
+  <!-- camada 4: LLM e interface -->
+  <rect x="8" y="432" width="744" height="160" rx="8" fill="#f3f6fa" stroke="#d5dbe3"/>
+  <text x="20" y="450" class="cam">4 · GERAÇÃO E INTERFACE</text>
+  <rect x="24" y="462" width="260" height="70" rx="6" fill="#fff" stroke="#2e7d4f"/>
+  <text x="36" y="482" class="tit">LLM — src/llm.py</text>
+  <text x="36" y="498" class="txt">Ollama local: Llama 3.1 8B (padrão)</text>
+  <text x="36" y="512" class="txt">alternativa: Groq (LLM_BACKEND=groq)</text>
+  <text x="36" y="525" class="peq">temperatura 0,1 · até 450 tokens</text>
+  <rect x="300" y="462" width="250" height="70" rx="6" fill="#fff" stroke="#2e7d4f"/>
+  <text x="312" y="482" class="tit">Interface — app.py (Streamlit)</text>
+  <text x="312" y="498" class="txt">chat com fontes consultadas</text>
+  <text x="312" y="512" class="txt">painel da frota (ranking, séries)</text>
+  <text x="312" y="525" class="peq">CLI: python src/assistente.py</text>
+  <rect x="566" y="462" width="170" height="70" rx="6" fill="#fff" stroke="#2e7d4f"/>
+  <text x="578" y="482" class="tit">Usuário</text>
+  <text x="578" y="498" class="txt">técnico, planejador,</text>
+  <text x="578" y="512" class="txt">engenheiro de confiabilidade</text>
+  <path class="lin bi" d="M230 460 V432 H340 V408"/>
+  
+  <text x="348" y="430" class="peq">contexto + pergunta / resposta</text>
+  <path class="lin" d="M566 497 H552"/>
+  <path class="lin" d="M552 510 H564"/>
+  <path class="lin bi" d="M470 460 V446 H620 V408"/>
+  <text x="628" y="448" class="peq">pergunta / resposta</text>
+  <text x="24" y="560" class="peq">Fluxo: os dados (1) são processados em lote pelos modelos e pela indexação (2). A cada pergunta, o orquestrador (3) monta o contexto com</text>
+  <text x="24" y="574" class="peq">dados, saídas dos modelos e trechos recuperados, e o LLM (4) redige a resposta exibida ao usuário com as fontes. Linha tracejada: as OS também</text>
+  <text x="24" y="588" class="peq">são lidas diretamente pelo orquestrador para o histórico estruturado do ativo.</text>
+  <rect x="16" y="131" width="322" height="15" fill="#f3f6fa"/>
+  <text x="20" y="142" class="cam">2 · MODELOS E INDEXAÇÃO (PROCESSAMENTO EM LOTE)</text>
+</svg>
+
+<figcaption>Figura 3.1 — Arquitetura e fluxo de informações, da entrada dos dados até a resposta ao usuário.</figcaption>
+</figure>
+
+<h2>3.1 Componentes e responsabilidades</h2>
+<table>
+  <tr><th>Componente</th><th>Arquivo</th><th>Tecnologia</th><th>Responsabilidade</th></tr>
+  <tr><td>Base de sensores</td><td><code>dados/motor.db</code></td><td>SQLite</td><td>Leituras, cadastro de ativos e tipos de falha</td></tr>
+  <tr><td>Pipeline de anomalias</td><td><code>src/anomalias.py</code></td><td>scikit-learn</td><td>Baseline, features temporais, Isolation Forest, limiar P95, severidade, persistência, ranking</td></tr>
+  <tr><td>Classificador de falhas</td><td><code>modelos/sprint2/*.joblib</code></td><td>scikit-learn</td><td>Classe de falha mais provável e distribuição de probabilidades</td></tr>
+  <tr><td>Indexação RAG</td><td><code>src/rag.py</code></td><td>Ollama (embeddinggemma), scikit-learn (TF-IDF)</td><td>Chunking, metadados, índice híbrido, busca com filtros</td></tr>
+  <tr><td>Dados operacionais</td><td><code>src/dados_operacionais.py</code></td><td>pandas</td><td>Resumo de sensores × baseline, saídas dos modelos, ranking e histórico de OS</td></tr>
+  <tr><td>Orquestrador</td><td><code>src/assistente.py</code></td><td>Python</td><td>Interpreta a pergunta, aplica guardas, monta o contexto, chama o LLM e pós-processa</td></tr>
+  <tr><td>Cliente de LLM</td><td><code>src/llm.py</code></td><td>Ollama (Llama 3.1 8B) ou Groq</td><td>Geração de texto e embeddings</td></tr>
+  <tr><td>Interface</td><td><code>app.py</code></td><td>Streamlit</td><td>Chat, exibição de fontes e painel da frota</td></tr>
+  <tr><td>Testes</td><td><code>testes/*.py</code></td><td>Python</td><td>Avaliação da recuperação e cenários ponta a ponta</td></tr>
+</table>
+
+<h2>3.2 Fluxo de uma pergunta</h2>
+<ol>
+  <li><b>Entrada:</b> o usuário digita a pergunta no Streamlit (ou no terminal); opcionalmente escolhe um ativo em foco.</li>
+  <li><b>Interpretação:</b> o orquestrador extrai as tags de ativos (<code>MOT-008</code>, “motor 8”), o período (“entre 15h e 16h”, “às 20:19”, “últimos 30 minutos”, “em março”) e a intenção (situação, histórico, procedimento, frota).</li>
+  <li><b>Guardas determinísticas:</b> ativo inexistente → resposta direta; pergunta sobre “o motor” sem tag → pedido de esclarecimento (sem chamar o LLM).</li>
+  <li><b>Contexto operacional:</b> para cada ativo, resume as leituras do período e as compara com o baseline, consulta as saídas do detector de anomalias (percentil, severidade, persistência, sensor de maior desvio), aplica o classificador à última leitura e busca as OS.</li>
+  <li><b>Recuperação:</b> a pergunta é enriquecida com a falha provável e o sensor de maior desvio e enviada ao índice híbrido, filtrado pelo ativo.</li>
+  <li><b>Guarda de suficiência:</b> sem dado operacional e sem trecho acima do limiar de relevância, o assistente responde que não há informação suficiente.</li>
+  <li><b>Geração:</b> o LLM recebe as instruções do sistema e o contexto rotulado com IDs (<code>[D1]</code>, <code>[M1]</code>, <code>[H1]</code>, <code>[DOC-003#3]</code>).</li>
+  <li><b>Pós-processamento:</b> inclusão do aviso de avaliação profissional quando necessário, lista de fontes consultadas, marcação das fontes citadas e registro em <code>logs/conversas.jsonl</code>.</li>
+</ol>
+
+<h2>3.3 Integração entre os modelos das sprints anteriores e o assistente</h2>
+<p>Na Sprint 2, o agente chamava o classificador por <i>function calling</i>: o LLM decidia quando chamar a
+ferramenta e preenchia os quatro valores de sensores digitados pelo usuário. Nesta sprint a integração foi
+invertida: o <b>orquestrador consulta os modelos antes da geração</b> e entrega ao LLM os resultados já
+calculados como blocos de contexto. A decisão foi tomada por dois motivos: o fluxo deixa de depender da
+capacidade do LLM de escolher e preencher ferramentas corretamente, ponto sensível em modelos locais
+pequenos; e o assistente agora consulta os dados históricos do ativo, sem depender de o usuário digitar as
+leituras. A comparação experimental entre os dois modos de integração não foi feita e fica registrada como
+melhoria futura. O resultado é um fluxo
+determinístico, testável e auditável, em que o LLM fica responsável apenas por redigir a resposta a partir
+de evidências.</p>
+<table>
+  <tr><th>Modelo</th><th>Entrada no assistente</th><th>Bloco de contexto</th></tr>
+  <tr><td>Baseline (Sprint 3)</td><td>médias, desvios e P1/P99 por sensor</td><td><code>[D#]</code>: valor atual, média, mín, máx, faixa normal, desvio padronizado</td></tr>
+  <tr><td>Isolation Forest temporal (Sprint 3)</td><td>saídas por leitura em <code>resultados_anomalias.csv</code></td><td><code>[M#]</code>: percentil, severidade, persistência, sensor de maior desvio, alertas no período</td></tr>
+  <tr><td>Random Forest (Sprint 2)</td><td>última leitura do período</td><td><code>[M#]</code>: classe, confiança, distribuição, marcação de incerteza (&lt; 60%)</td></tr>
+  <tr><td>Ranking (Sprint 3)</td><td>todas as leituras do período</td><td><code>[R1]</code>: ativos por taxa de alertas e percentil máximo</td></tr>
+</table>
+
+<h2>3.4 Tecnologias</h2>
+<p>Python 3.14 · scikit-learn 1.8 · pandas 3.0 · NumPy 2.4 · SQLite · Ollama 0.40 com <b>Llama 3.1 8B</b>
+(quantização Q4) para geração e <b>embeddinggemma</b> (768 dimensões) para embeddings · Streamlit 1.58 ·
+Matplotlib · Playwright (apenas para capturas de tela das evidências). O backend alternativo Groq
+(Llama 3.1 8B Instant), usado na Sprint 2, continua suportado por variável de ambiente.</p>
+
+<!-- ============================== 4 ============================== -->
+<h1>4. Documentação dos modelos de inteligência artificial</h1>
+<h2>4.1 Classificador de falhas (Sprint 2)</h2>
+<table>
+  <tr><th style="width:28%">Item</th><th>Descrição</th></tr>
+  <tr><td>Tarefa</td><td>Classificação multiclasse do estado da leitura: Normal, Desbalanceamento, Superaquecimento, Falha Mecânica</td></tr>
+  <tr><td>Variáveis</td><td><code>rotacao, vibracao, temperatura, corrente</code> (leitura pontual)</td></tr>
+  <tr><td>Preparação</td><td>StandardScaler ajustado no treino; categóricas sem variância descartadas</td></tr>
+  <tr><td>Divisão</td><td>Cronológica por motor: 70% iniciais para treino (21.000) e 30% finais para teste (9.000)</td></tr>
+  <tr><td>Algoritmo</td><td>RandomForestClassifier (150 árvores, profundidade máxima 14, <code>class_weight='balanced'</code>, random_state 42)</td></tr>
+  <tr><td>Referência</td><td>Regressão logística balanceada, com desempenho inferior</td></tr>
+  <tr><td>Justificativa</td><td>Captura interações não lineares (temperatura e corrente subindo juntas), é robusto e interpretável; o balanceamento por pesos foi preferido ao SMOTE porque este interpolaria leituras de instantes diferentes</td></tr>
+</table>
+<figure><img src="../../evidencias/fig_classificador.png" style="width:82%"><figcaption>Figura 4.1 — Precisão, recall e F1 por classe no período de teste (<code>python src/avaliar_classificador.py</code>).</figcaption></figure>
+<table>
+  <tr><th>Classe</th><th>Precisão</th><th>Recall</th><th>F1</th><th>Suporte</th></tr>
+  <tr><td>Normal</td><td>0,900</td><td>0,996</td><td>0,946</td><td>4.647</td></tr>
+  <tr><td>Desbalanceamento</td><td>0,972</td><td>0,296</td><td>0,454</td><td>1.774</td></tr>
+  <tr><td>Superaquecimento</td><td>0,993</td><td>0,842</td><td>0,911</td><td>1.679</td></tr>
+  <tr><td>Falha Mecânica</td><td>0,443</td><td>0,932</td><td>0,601</td><td>900</td></tr>
+  <tr><td><b>Macro / acurácia</b></td><td colspan="3"><b>F1 macro 0,728 · acurácia 0,823</b></td><td>9.000</td></tr>
+</table>
+<p><b>Análise.</b> O ponto fraco é o Desbalanceamento: 1.043 das 1.774 leituras dessa classe foram previstas
+como Falha Mecânica, porque as duas falhas elevam a vibração e derrubam a rotação. Por isso o assistente
+apresenta a confiança do classificador, marca como <i>incerto</i> abaixo de 60% e trata a classe prevista como
+hipótese. A ablação da Sprint 2 com features de janela elevou o F1 macro para cerca de 0,97, mas não foi
+adotada no modelo entregue porque, na época, o agente recebia apenas uma leitura pontual. Com o assistente
+atual, que já consulta o histórico do ativo, essa versão passa a ser viável e é uma melhoria prioritária.</p>
+
+<h2>4.2 Baseline operacional (Sprint 3)</h2>
+<p>O baseline tem duas camadas. A estatística registra média, desvio e percentis P1/P99 de cada sensor no
+período normal de treino (tabela 2.3) e é usada para explicar o desvio de cada sensor. A multivariada é o
+próprio Isolation Forest, que aprende combinações normais entre os sensores que limites independentes não
+representam. Como os 20 motores são idênticos, adotou-se um baseline global; a separação por ativo é uma
+evolução prevista para dados reais.</p>
+
+<h2>4.3 Detector de anomalias — Isolation Forest temporal (Sprint 3)</h2>
+<table>
+  <tr><th style="width:28%">Item</th><th>Descrição</th></tr>
+  <tr><td>Abordagem</td><td>Semissupervisionada: aprende somente a operação normal; os rótulos de falha não entram como feature</td></tr>
+  <tr><td>Variáveis (16)</td><td>4 sensores + média, desvio-padrão e variação (delta) em janela causal de 10 leituras (5 min) para cada sensor</td></tr>
+  <tr><td>Partições</td><td>Treino: 55% iniciais de cada motor (16.500 leituras, todas normais) · Calibração: 55–70%, apenas normais (3.743) · Teste: 30% finais (9.000)</td></tr>
+  <tr><td>Algoritmo</td><td>IsolationForest (300 árvores, <code>max_samples='auto'</code>, random_state 42); score = −<code>score_samples</code></td></tr>
+  <tr><td>Limiar</td><td>Percentil 95 dos scores da calibração normal = <b>0,4944</b></td></tr>
+  <tr><td>Saídas</td><td>Score, percentil em relação à calibração, alerta, severidade, persistência e sensor de maior desvio</td></tr>
+</table>
+<figure><img src="../../evidencias/fig_detector_anomalias.png" style="width:96%"><figcaption>Figura 4.2 — Matriz de confusão do detector temporal e comparação com o detector pontual (<code>python src/anomalias.py</code>).</figcaption></figure>
+<table>
+  <tr><th>Modelo</th><th>Precisão</th><th>Recall</th><th>F1</th><th>ROC-AUC</th><th>PR-AUC</th><th>Falso alerta</th></tr>
+  <tr><td>Isolation Forest pontual (4 features)</td><td>0,948</td><td>0,915</td><td>0,931</td><td>0,973</td><td>0,979</td><td>4,69%</td></tr>
+  <tr><td><b>Isolation Forest temporal (16 features)</b></td><td><b>0,954</b></td><td><b>0,939</b></td><td><b>0,947</b></td><td><b>0,982</b></td><td><b>0,983</b></td><td><b>4,24%</b></td></tr>
+</table>
+<p><b>Escolha.</b> A versão temporal melhorou todas as métricas: as janelas capturam a tendência das rampas de
+degradação, que uma leitura isolada ainda confunde com ruído. Dos 4.353 eventos de falha do teste, 4.088
+foram detectados; 197 das 4.647 leituras normais geraram alerta. As métricas são binárias (normal × anomalia)
+e não são diretamente comparáveis ao F1 macro multiclasse do classificador.</p>
+<p><b>Severidade e persistência.</b> Normal abaixo do P95; Atenção entre P95 e P97; Alta entre P97 e P99;
+Crítica a partir do P99. Alertas consecutivos do mesmo motor formam sequências: 1–2 leituras = pontual,
+3–9 = curta, 10 ou mais (≥ 5 min) = persistente. No teste, 3.943 dos 4.285 alertas foram persistentes,
+134 curtos e 208 pontuais; a vibração foi o sensor de maior desvio em 2.538 alertas.</p>
+<figure><img src="../../evidencias/fig_serie_mot008.png" style="width:88%"><figcaption>Figura 4.3 — MOT-008: a vibração deixa a faixa normal após o início da rampa simulada (15:39) e o percentil fica acima do limiar de forma persistente.</figcaption></figure>
+<figure><img src="../../evidencias/fig_ranking_ativos.png" style="width:72%"><figcaption>Figura 4.4 — Ranking de ativos por taxa de alertas no período de teste, com o sensor de maior desvio.</figcaption></figure>
+<div class="nota"><b>Reprodutibilidade.</b> O código da Sprint 3 foi consolidado em <code>src/anomalias.py</code>.
+A reexecução sobre o mesmo <code>motor.db</code> reproduziu exatamente as métricas, o limiar (0,4944) e a matriz
+de confusão do relatório da Sprint 3. A única diferença é a contagem de alertas curtos e pontuais (134/208
+contra 136/206), porque os cortes de persistência foram fixados explicitamente nesta versão (3 e 10 leituras).</div>
+
+<!-- ============================== 5 ============================== -->
+<h1>5. Documentação da arquitetura RAG</h1>
+<h2>5.1 Preparação e indexação dos documentos</h2>
+<ol>
+  <li><b>Catálogo com metadados:</b> cada documento técnico tem um cabeçalho com <code>doc_id, titulo, tipo, ativos, versao, origem</code>. O campo <code>ativos</code> vale <code>todos</code> ou lista tags específicas.</li>
+  <li><b>Chunking por seção:</b> o texto é dividido nos títulos de seção (<code>## </code>), preservando o contexto semântico de cada procedimento. Seções com mais de 1.200 caracteres são subdivididas por parágrafo, com sobreposição de um parágrafo; trechos com menos de 60 caracteres e o aviso de “documento simulado” não são indexados.</li>
+  <li><b>Ordens de serviço:</b> cada OS vira uma ficha textual (“Ordem de serviço OS-2026-0009 do motor MOT-008, tipo corretiva…”) com metadados de ativo e data.</li>
+  <li><b>Índice híbrido</b> com 58 trechos (35 de documentos e 23 de OS):
+    <ul>
+      <li><i>Denso:</i> embeddings <b>embeddinggemma</b> (768 dimensões, normalizados em L2), com os prefixos recomendados pelo modelo para documento e consulta;</li>
+      <li><i>Léxico:</i> TF-IDF de palavras (unigramas e bigramas, sem acentos e sem <i>stopwords</i>) + TF-IDF de n-gramas de caracteres (3 a 5), que tolera variações como “superaquecido/superaquecimento”.</li>
+    </ul></li>
+  <li><b>Persistência:</b> o índice é salvo em <code>modelos/rag/indice.joblib</code> (<code>python src/rag.py --indexar</code>).</li>
+</ol>
+
+<h2>5.2 Recuperação do contexto</h2>
+<ul>
+  <li><b>Fusão:</b> as listas densa e léxica são combinadas por <i>Reciprocal Rank Fusion</i> (RRF, k = 60), técnica prevista na Sprint 1.</li>
+  <li><b>Expansão de consulta:</b> sinônimos do domínio são acrescentados à busca léxica (“esquentando” → temperatura/superaquecimento; “trepidando” → vibração; “amperagem” → corrente).</li>
+  <li><b>Consulta enriquecida:</b> quando o ativo está em alerta, a falha provável (se o classificador não estiver incerto) e o sensor de maior desvio são acrescentados à pergunta, para que o procedimento correto seja recuperado mesmo quando o usuário não cita o sintoma.</li>
+  <li><b>Filtros:</b> por <b>ativo</b> (só documentos gerais ou daquele ativo), por <b>tipo</b> de documento e por <b>período</b> (data de abertura das OS). As leituras de sensores também são filtradas pelo período interpretado na pergunta; sem período, usa-se os últimos 30 minutos da base.</li>
+  <li><b>Porta de relevância:</b> um trecho só vira evidência se a similaridade de cosseno com a pergunta for ≥ <b>0,38</b>. Sem embeddings disponíveis, o sistema cai para busca só léxica com limiar próprio.</li>
+  <li><b>Top-k:</b> até 3 trechos de documentos por resposta, além dos blocos operacionais.</li>
+</ul>
+
+<h2>5.3 Dados operacionais e resultados dos modelos no contexto</h2>
+<p>Os dados estruturados não passam pelo índice vetorial: são consultados diretamente e inseridos como blocos
+rotulados, o que evita erros de recuperação em valores numéricos. Exemplo real do bloco enviado ao LLM para o
+MOT-008:</p>
+<pre>[D1] Ativo MOT-008 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)
+- Rotação: atual 3267.9 RPM (média 3316.94, mín 3240.1, máx 3381.0); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -13.4 desvios-padrão
+- Vibração: atual 7.64 mm/s (média 7.54, mín 6.78, máx 8.1); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +19.5 desvios-padrão
+- Temperatura: atual 89.82 °C (média 84.17, mín 76.03, máx 90.11); faixa normal do baseline 57.92–71.99 °C; desvio atual +8.3 desvios-padrão
+- Corrente: atual 15.47 A (média 15.15, mín 13.26, máx 16.61); faixa normal do baseline 10.1–12.91 A; desvio atual +6.6 desvios-padrão
+
+[M1] Detector de anomalias (Isolation Forest temporal) para MOT-008:
+- última leitura 2026-05-01 20:29:30: percentil 100.0, severidade Crítica, persistência Persistente, sensor de maior desvio: Vibração
+- alertas no período: 61 de 61 leituras (100.0%); primeiro alerta no período: 2026-05-01 19:59:30; sequência de alertas em curso desde: 2026-05-01 16:12:00; severidade máxima: Crítica
+Classificador de falhas conhecidas (Random Forest) na última leitura: Falha Mecânica com confiança 77%; distribuição Normal 6%, Desbalanceamento 7%, Superaquecimento 11%, Falha Mecânica 77%</pre>
+
+<h2>5.4 Modelos utilizados</h2>
+<table>
+  <tr><th>Função</th><th>Modelo</th><th>Configuração</th></tr>
+  <tr><td>Geração</td><td>Llama 3.1 8B Instruct (Ollama, Q4_0)</td><td>temperatura 0,1 · máx. 450 tokens · contexto 8.192 tokens</td></tr>
+  <tr><td>Geração (alternativa)</td><td>Llama 3.1 8B Instant (Groq)</td><td><code>LLM_BACKEND=groq</code></td></tr>
+  <tr><td>Embeddings</td><td>embeddinggemma (Ollama)</td><td>768 dimensões, normalização L2, similaridade de cosseno</td></tr>
+</table>
+<p><b>Comparação de modelos de geração.</b> O Llama 3.2 3B foi testado com a mesma pergunta sobre o MOT-008.
+Ele respondeu em 114 s (o Llama 3.1 8B levou de 93 a 213 s nos cenários da seção 7, em CPU), mas afirmou que “a causa raiz é o
+desalinhamento de 0,12 mm”, informação que vinha de uma OS de março e não da condição atual. Por priorizar
+fidelidade às fontes, o grupo manteve o Llama 3.1 8B como padrão.</p>
+
+<h2>5.5 Instruções de geração</h2>
+<p>O prompt de sistema (em <code>src/assistente.py</code>) define as regras abaixo; a instrução de citação é
+repetida ao final da mensagem do usuário, porque modelos pequenos seguem melhor a última instrução recebida.</p>
+<ol>
+  <li>Usar somente o contexto; não inventar valores, peças, normas ou procedimentos.</li>
+  <li>Citar a fonte entre colchetes após cada afirmação, com os IDs do contexto.</li>
+  <li>Dizer claramente quando a informação não estiver no contexto.</li>
+  <li>Alerta de anomalia não é falha confirmada; percentil não é probabilidade; sensor de maior desvio é heurística.</li>
+  <li>Classificador com confiança abaixo de 60% deve ser tratado como hipótese.</li>
+  <li>Nunca orientar religamento, desmontagem ou intervenção elétrica; intervenções são de profissional habilitado.</li>
+  <li>Formato: <b>Situação</b>, <b>Diagnóstico provável</b> e <b>Ações recomendadas</b>, em até 220 palavras.</li>
+</ol>
+
+<h2>5.6 Apresentação das fontes</h2>
+<ul>
+  <li><b>No texto:</b> citações inline como <code>[M1]</code> e <code>[DOC-004#3]</code>.</li>
+  <li><b>No rodapé:</b> lista “Fontes consultadas” com ID e título de todos os blocos entregues ao LLM.</li>
+  <li><b>Na interface:</b> painel expansível com o texto de cada fonte, o tipo (dados de sensores, resultado de modelo, histórico, documento técnico), a relevância do trecho e a marca ✅ quando a fonte foi citada na resposta.</li>
+</ul>
+
+<h2>5.7 Avaliação da recuperação</h2>
+<p>Foram rotuladas 16 perguntas do domínio, cada uma com o documento esperado, e 6 perguntas fora do escopo
+(<code>python testes/avaliar_recuperacao.py</code>).</p>
+<table>
+  <tr><th>Configuração</th><th>Hit@1</th><th>Hit@3</th><th>MRR</th><th>Fora do escopo bloqueadas</th></tr>
+  <tr><td>Somente léxica (TF-IDF), limiar 0,10</td><td>0,438</td><td>0,812</td><td>0,642</td><td>2 de 6</td></tr>
+  <tr><td><b>Híbrida (embeddings + TF-IDF, RRF), limiar 0,38</b></td><td><b>0,625</b></td><td><b>0,812</b></td><td><b>0,719</b></td><td><b>6 de 6</b></td></tr>
+</table>
+<figure><img src="../../evidencias/fig_recuperacao.png" style="width:86%"><figcaption>Figura 5.1 — Maior similaridade entre cada pergunta e a base. O limiar separa as perguntas fora do escopo, ao custo de duas perguntas válidas ficarem abaixo dele.</figcaption></figure>
+<p><b>Análise.</b> A busca híbrida melhorou a posição do documento correto e passou a rejeitar todas as perguntas
+fora do escopo. As faixas de similaridade se sobrepõem entre 0,36 e 0,38, então o limiar é um compromisso:
+duas perguntas válidas (“quem pode medir o isolamento…”, “troca de rolamento no histórico”) ficaram abaixo
+dele. A segunda é coberta pela consulta estruturada do histórico quando o ativo é informado. Como o conjunto é
+pequeno, o limiar deve ser recalibrado com mais perguntas reais.</p>
+
+<!-- ============================== 6 ============================== -->
+<h1>6. Documentação funcional do assistente</h1>
+<h2>6.1 Funcionalidades disponíveis</h2>
+<ul>
+  <li><b>Chat em linguagem natural</b> sobre sensores, anomalias, falhas prováveis, histórico de manutenção e procedimentos.</li>
+  <li><b>Filtro de ativo</b> na barra lateral (opcional) e interpretação automática de tags e períodos na pergunta.</li>
+  <li><b>Fontes consultadas</b> em cada resposta, com o texto do trecho e a indicação das fontes citadas.</li>
+  <li><b>Perguntas de exemplo</b> clicáveis e botão para limpar a conversa.</li>
+  <li><b>Painel da frota:</b> ranking de ativos por alertas e gráficos do percentil de anomalia e de cada sensor ao longo do tempo.</li>
+  <li><b>Indicadores de estado:</b> modelo de linguagem em uso, disponibilidade do Ollama e período coberto pela base.</li>
+</ul>
+
+<h2>6.2 Etapas de utilização da interface</h2>
+<ol>
+  <li>Inicie o Ollama e execute <code>streamlit run app.py</code>; o navegador abre em <code>http://localhost:8501</code>.</li>
+  <li>Confira na barra lateral se o Ollama aparece como disponível.</li>
+  <li>(Opcional) Escolha um ativo em foco; caso contrário, informe a tag na pergunta.</li>
+  <li>Digite a pergunta ou clique em um exemplo. A resposta leva de 1 a 4 minutos em CPU.</li>
+  <li>Leia a resposta e abra “Fontes consultadas” para verificar as evidências.</li>
+  <li>Use a aba “Painel da frota” para ver o ranking e os gráficos do ativo.</li>
+</ol>
+<figure><img src="../../evidencias/tela_02_fontes_consultadas.png" style="width:74%"><figcaption>Figura 6.1 — Consulta sobre o MOT-008 (execução independente dos testes da seção 7): barra lateral com ativo em foco, modelo, estado do Ollama e exemplos; resposta com aviso profissional e painel “Fontes consultadas” expandido, com tipo, relevância e indicação das fontes citadas.</figcaption></figure>
+<figure><img src="../../evidencias/tela_03_ambigua_insuficiente.png" style="width:92%"><figcaption>Figura 6.2 — Pergunta ambígua (pedido de esclarecimento) e pergunta fora do escopo (informação insuficiente).</figcaption></figure>
+<figure><img src="../../evidencias/tela_04_painel_frota.png" style="width:92%"><figcaption>Figura 6.3 — Aba “Painel da frota”: ranking de ativos e séries de percentil de anomalia e de sensor.</figcaption></figure>
+
+
+<h2>6.3 Exemplos de perguntas por tema</h2>
+<table>
+  <tr><th>Tema</th><th>Pergunta</th><th>Fontes usadas</th></tr>
+  <tr><td>Sensores</td><td>Como estava a vibração do MOT-019 entre 15h e 16h?</td><td>[D1] leituras filtradas pelo período</td></tr>
+  <tr><td>Anomalias</td><td>Como está o MOT-008 agora? Há alguma anomalia?</td><td>[M1] detector e classificador</td></tr>
+  <tr><td>Falhas</td><td>O MOT-011 está esquentando? O que pode ser?</td><td>[M1] + DOC-003</td></tr>
+  <tr><td>Histórico</td><td>O MOT-001 teve manutenção em março?</td><td>[H#] ordens de serviço</td></tr>
+  <tr><td>Procedimentos</td><td>O que fazer quando a vibração está alta?</td><td>DOC-002</td></tr>
+  <tr><td>Frota</td><td>Quais motores estão mais críticos agora?</td><td>[R1] ranking</td></tr>
+  <tr><td>Interpretação</td><td>O percentil de anomalia é probabilidade de falha?</td><td>DOC-007</td></tr>
+</table>
+<p>As respostas completas de cada tema estão na seção 7.</p>
+
+<h2>6.4 Perguntas ambíguas</h2>
+<p>Se a pergunta pede a situação ou o histórico de um equipamento sem informar qual (“Como está o motor?”), o
+assistente <b>não chama o LLM</b> e pede a tag, sugerindo um exemplo e a alternativa de consultar a frota.
+Perguntas conceituais sem ativo (“O que fazer quando a vibração está alta?”) são respondidas só com a
+documentação. Referências como “esse motor” usam o último ativo citado na conversa, e a resposta informa essa
+suposição. Se a tag não existe (MOT-045), o assistente informa a faixa válida.</p>
+
+<h2>6.5 Ausência de informações</h2>
+<ul>
+  <li>Sem dado operacional e sem trecho acima do limiar de relevância, a resposta é “não encontrei informações suficientes”, com o motivo e o que o assistente consegue responder; o LLM não é chamado, eliminando o risco de inventar.</li>
+  <li>Quando o período pedido está fora da base de sensores (ex.: “em março”), um bloco <code>[P1]</code> avisa o LLM de que só há leituras de 01/05/2026, e apenas o histórico de OS daquele período é consultado.</li>
+  <li>Quando não há OS no período, o contexto registra isso explicitamente, para que a ausência seja informada em vez de ignorada.</li>
+</ul>
+
+<h2>6.6 Situações que exigem avaliação de um profissional</h2>
+<p>O aviso de <b>avaliação profissional obrigatória</b> é acrescentado automaticamente, mesmo que o LLM não o
+escreva, quando (a) algum ativo consultado está em severidade Crítica ou (b) a pergunta contém termos de
+risco (fumaça, cheiro de queimado, faísca, choque, religar, isolamento). O aviso referencia o DOC-006 e lembra
+que decisões de parada, intervenção e liberação são do profissional habilitado (NR-10/NR-12). As instruções do
+sistema também proíbem o assistente de orientar religamento ou intervenção elétrica.</p>
+
+<!-- ============================== 7 ============================== -->
+<h1>7. Testes e resultados</h1>
+<h2>7.1 Estratégia de testes</h2>
+<table>
+  <tr><th>Nível</th><th>O que verifica</th><th>Comando</th><th>Resultado</th></tr>
+  <tr><td>Modelos</td><td>Métricas do classificador e do detector no período de teste</td><td><code>src/avaliar_classificador.py</code>, <code>src/anomalias.py</code></td><td>Seção 4</td></tr>
+  <tr><td>Recuperação</td><td>Hit@k, MRR e bloqueio de perguntas fora do escopo</td><td><code>testes/avaliar_recuperacao.py</code></td><td>Seção 5.7</td></tr>
+  <tr><td>Ponta a ponta</td><td>9 cenários com resultado esperado e verificações automáticas (tipo de resposta, fontes, termos, aviso, período)</td><td><code>testes/cenarios.py</code></td><td>9 de 9 aprovados nas verificações automáticas; 7 de 9 corretos na avaliação manual</td></tr>
+</table>
+<p>Ambiente de execução: Windows 11, CPU de 12 núcleos sem GPU, Ollama 0.40.14, Llama 3.1 8B (Q4_0).
+Resultados completos em <code>evidencias/cenarios.json</code> e log em <code>evidencias/execucao_cenarios.log</code>.</p>
+<p><b>Duas rodadas e avaliação manual.</b> A primeira rodada passou em todas as verificações automáticas, mas a
+leitura manual das respostas revelou erros que as verificações não capturam (o C6 inventou uma confiança e trocou
+a severidade de um ativo). Os problemas foram corrigidos e todos os cenários foram reexecutados com o código final;
+a primeira rodada foi preservada em <code>evidencias/cenarios_v1_antes_ajustes.json</code>. Por isso a tabela traz
+duas colunas: a <b>verificação automática</b> (tipo de resposta, fontes, termos, aviso e período) e a
+<b>avaliação manual</b> da equipe, que confere cada número com o contexto e com o gabarito da simulação.
+Como o LLM não é determinístico, uma nova execução pode produzir textos diferentes.</p>
+
+<h2>7.2 Resumo dos cenários</h2>
+<table><tr><th>ID</th><th>Cenário</th><th>Tipo de resposta</th><th>Tempo</th><th>Fontes (citadas/consultadas)</th><th>Verificação automática</th><th>Avaliação manual</th></tr>
+<tr><td>C1</td><td>Consulta sobre falha/anomalia em um ativo</td><td>Resposta gerada (RAG + LLM)</td><td>212.9 s</td><td>8/8</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto c/ ressalva</span></td></tr>
+<tr><td>C2</td><td>Dados operacionais + documentação técnica</td><td>Resposta gerada (RAG + LLM)</td><td>183.0 s</td><td>6/6</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto c/ ressalva</span></td></tr>
+<tr><td>C3</td><td>Informação insuficiente (fora do escopo)</td><td>Informação insuficiente (sem LLM)</td><td>2.3 s</td><td>0/0</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto</span></td></tr>
+<tr><td>C4</td><td>Pergunta ambígua (ativo não informado)</td><td>Pedido de esclarecimento (sem LLM)</td><td>0.0 s</td><td>0/0</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto</span></td></tr>
+<tr><td>C5</td><td>Histórico de manutenção com período fora da base de sensores</td><td>Resposta gerada (RAG + LLM)</td><td>122.4 s</td><td>5/5</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto</span></td></tr>
+<tr><td>C6</td><td>Priorização da frota</td><td>Resposta gerada (RAG + LLM)</td><td>121.8 s</td><td>4/4</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag nao'>Parcial</span></td></tr>
+<tr><td>C7</td><td>Ativo inexistente</td><td>Ativo inexistente (sem LLM)</td><td>0.0 s</td><td>0/0</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto</span></td></tr>
+<tr><td>C8</td><td>Situação de segurança</td><td>Resposta gerada (RAG + LLM)</td><td>191.6 s</td><td>6/6</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag ok'>Correto c/ ressalva</span></td></tr>
+<tr><td>C9</td><td>Consulta com filtro de período</td><td>Resposta gerada (RAG + LLM)</td><td>92.7 s</td><td>5/5</td><td><span class='tag ok'>Aprovado</span></td><td><span class='tag parc'>Parcial</span></td></tr>
+</table>
+
+<h2>7.3 Cenários detalhados</h2>
+<p>Os três primeiros cenários atendem aos casos obrigatórios: consulta sobre falha ou anomalia (C1), consulta
+que combina dados operacionais e documentação técnica (C2) e consulta sem informações suficientes (C3).
+As respostas são transcritas exatamente como geradas, sem a lista de fontes do rodapé (mostrada à parte).</p>
+<div class="cenario">
+<h3>C1 — Consulta sobre falha/anomalia em um ativo</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Como está o MOT-008 agora? Há alguma anomalia?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Usar dados dos sensores e saídas dos modelos do MOT-008; informar severidade Crítica e alerta persistente, vibração como sensor de maior desvio, hipótese de Falha Mecânica com a confiança do classificador, citar fontes e incluir aviso de avaliação profissional.</td></tr>
+<tr><td><b>Execução</b></td><td>Resposta gerada (RAG + LLM) · 212.9 s · período: últimos 30 min da base
+ · modelo: <code>ollama:llama3.1</code></td></tr>
+<tr><td><b>Fontes</b></td><td><code>D1</code> ✅, <code>M1</code> ✅, <code>H1</code> ✅, <code>H2</code> ✅, <code>H3</code> ✅, <code>DOC-001#6</code> ✅, <code>DOC-004#1</code> ✅, <code>DOC-004#2</code> ✅ <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto c/ ressalva</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp"><b>Situação:</b>
+O MOT-008 apresenta uma combinação de sinais anormais, incluindo vibração elevada (7.64 mm/s), temperatura acima do normal (89.82 °C) e corrente acima do normal (15.47 A), além de uma rotação abaixo da faixa normal (3267.9 RPM). [D1]
+
+O detector de anomalias (Isolation Forest temporal) identificou um alerta crítico persistente desde 2026-05-01 16:12:00, com o sensor de maior desvio sendo a vibração. [M1]
+
+O classificador de falhas conhecidas (Random Forest) na última leitura apresentou uma confiança de 77% para Falha Mecânica. [M1]
+
+<b>Diagnóstico provável:</b>
+Hipótese: Falha Mecânica (rolamentos, desalinhamento, roçamento) com confiança de 77%. [M1]
+
+<b>Ações recomendadas:</b>
+1. Parar o MOT-008 para inspeção e diagnóstico detalhado.
+2. Verificar a vibração, temperatura e corrente em diferentes partes do motor.
+3. Realizar procedimentos de diagnóstico descritos em DOC-002, DOC-003 e DOC-004. [DOC-004#1]
+
+⚠️ <b>Avaliação profissional obrigatória:</b> a situação envolve severidade crítica ou risco à segurança. As indicações acima apoiam a investigação, mas a decisão de parada, intervenção ou liberação deve ser tomada por profissional habilitado (NR-10/NR-12), conforme DOC-006.</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Os valores citados (vibração 7,64 mm/s, temperatura 89,82 °C, corrente 15,47 A, rotação 3.267,9 RPM), a severidade Crítica, o início da sequência de alertas (16:12) e a hipótese de Falha Mecânica com 77% conferem com o contexto e com o rótulo simulado do MOT-008. O aviso de avaliação profissional foi incluído. <b>Ressalva:</b> a ação “parar o MOT-008” não tem citação; ela é coerente com o DOC-004 (vibração acima de 7,1 mm/s e rotação abaixo de 3.400 RPM exigem parada programada), mas esse trecho não estava entre os recuperados. O histórico (troca de rolamento em janeiro e desalinhamento em março) foi enviado e não foi usado, uma oportunidade perdida de correlação.</p>
+</div>
+<div class="cenario">
+<h3>C2 — Dados operacionais + documentação técnica</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“O MOT-011 está esquentando? O que devo verificar segundo o procedimento?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Combinar as leituras de temperatura/corrente do MOT-011 com o POP de superaquecimento (DOC-003) e com o histórico de OS do ativo; listar verificações do procedimento com citação.</td></tr>
+<tr><td><b>Execução</b></td><td>Resposta gerada (RAG + LLM) · 183.0 s · período: últimos 30 min da base
+ · modelo: <code>ollama:llama3.1</code></td></tr>
+<tr><td><b>Fontes</b></td><td><code>D1</code> ✅, <code>M1</code> ✅, <code>H1</code> ✅, <code>DOC-001#6</code> ✅, <code>DOC-003#3</code> ✅, <code>DOC-003#1</code> ✅ <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto c/ ressalva</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp"><b>Situação:</b> O MOT-011 está apresentando uma temperatura de carcaça acima de 101,51 °C, com um desvio de +12,2 desvios-padrão em relação ao baseline, e uma corrente de 16,12 A, com um desvio de +7,7 desvios-padrão. O detector de anomalias aponta temperatura como sensor de maior desvio e o classificador de falhas conhecidas sugere Superaquecimento com confiança de 66% [M1].
+
+<b>Diagnóstico provável:</b> Hipótese de Superaquecimento, com confiança de 66% [M1].
+
+<b>Ações recomendadas:</b>
+
+1. Verificar se a carga acionada mudou (processo, produto, regulagem) [DOC-003#3].
+2. Limpar e inspecionar aletas e entrada de ar [DOC-003#3].
+3. Medir a temperatura ambiente próxima ao motor [DOC-003#3].
+4. Medir tensão de alimentação e comparar com a nominal; desvio acima de 10% exige correção [DOC-003#3].
+5. Comparar a corrente medida com a corrente nominal de 11,5 A; corrente acima de 13,5 A por mais de 10 minutos indica sobrecarga [DOC-003#3].
+
+⚠️ <b>Avaliação profissional obrigatória:</b> a situação envolve severidade crítica ou risco à segurança. As indicações acima apoiam a investigação, mas a decisão de parada, intervenção ou liberação deve ser tomada por profissional habilitado (NR-10/NR-12), conforme DOC-006.</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Cenário obrigatório que combina dados e documentação. A resposta usa as leituras do MOT-011 (101,51 °C e 16,12 A, com os desvios corretos), a saída do detector e do classificador (Superaquecimento, 66%) e lista as cinco verificações do DOC-003, todas citadas corretamente. <b>Ressalva:</b> a OS-2026-0029, que registrou superaquecimento por tensão 9% abaixo da nominal no mesmo motor, estava no contexto e não foi mencionada, embora reforce a verificação da tensão.</p>
+</div>
+<div class="cenario">
+<h3>C3 — Informação insuficiente (fora do escopo)</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Qual é a pressão de descarga recomendada para o compressor GA55 da linha 2?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Não inventar valor; informar que não há dados nem documentos sobre o equipamento e explicar o que o assistente consegue responder.</td></tr>
+<tr><td><b>Execução</b></td><td>Informação insuficiente (sem LLM) · 2.3 s · período: últimos 30 min da base
+</td></tr>
+<tr><td><b>Fontes</b></td><td>nenhuma (resposta determinística) <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp">Não encontrei informações suficientes para responder com segurança: não há dados operacionais nem trechos de documentação relevantes para a pergunta.
+
+Posso ajudar com: situação dos sensores e alertas de um motor (MOT-001 a MOT-020), diagnóstico provável de falhas conhecidas, histórico de ordens de serviço, ranking da frota e procedimentos de troubleshooting dos documentos técnicos indexados. Se a informação existir em outra fonte, ela precisa ser incluída na base documental.</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Comportamento correto. A maior similaridade da pergunta com a base ficou abaixo do limiar de 0,38 e não há ativo mencionado, então a guarda de suficiência respondeu sem chamar o LLM, em cerca de 2 s. Não houve valor inventado de pressão. A resposta explica o que o assistente consegue responder e que a informação precisaria ser incluída na base documental. Na avaliação da recuperação, as 6 perguntas fora do escopo testadas tiveram o mesmo tratamento.</p>
+</div>
+<div class="cenario">
+<h3>C4 — Pergunta ambígua (ativo não informado)</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Como está o motor? Está normal?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Pedir esclarecimento sobre qual ativo consultar, sem chamar o LLM.</td></tr>
+<tr><td><b>Execução</b></td><td>Pedido de esclarecimento (sem LLM) · 0.0 s · período: —
+</td></tr>
+<tr><td><b>Fontes</b></td><td>nenhuma (resposta determinística) <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp">Para responder preciso saber <b>qual ativo</b> você quer consultar. Informe a tag do motor (MOT-001 a MOT-020), por exemplo: <i>&quot;Como está o MOT-008 na última hora?&quot;</i>. Se quiser uma visão geral, pergunte: <i>&quot;Quais motores estão mais críticos agora?&quot;</i></div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Comportamento correto. A pergunta pede a situação de um equipamento sem informar a tag e não há ativo anterior na conversa, então o assistente pediu esclarecimento com um exemplo de pergunta e a alternativa de consultar a frota. A resposta é instantânea porque não usa o LLM.</p>
+</div>
+<div class="cenario">
+<h3>C5 — Histórico de manutenção com período fora da base de sensores</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“O MOT-001 teve manutenção em março? Houve alerta de anomalia nesse mês?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Informar a OS-2026-0031 (março, superaquecimento) e deixar claro que não há leituras de sensores em março, portanto não é possível afirmar se houve alerta.</td></tr>
+<tr><td><b>Execução</b></td><td>Resposta gerada (RAG + LLM) · 122.4 s · período: 03/2026 (histórico de OS)
+ · modelo: <code>ollama:llama3.1</code></td></tr>
+<tr><td><b>Fontes</b></td><td><code>P1</code> ✅, <code>H1</code> ✅, <code>DOC-005#5</code> ✅, <code>DOC-001#3</code> ✅, <code>DOC-001#6</code> ✅ <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp"><b>Situação:</b> O MOT-001 teve manutenção em março, conforme ordem de serviço OS-2026-0031 [H1]. A manutenção foi uma corretiva para superaquecimento, com temperatura de carcaça em 78°C durante pico de produção [H1]. O histórico de ordens de serviço não fornece informações sobre alertas de anomalia nesse período, pois apenas há leituras de sensores de 01/05/2026 08:00 a 01/05/2026 20:29 [P1].
+
+<b>Diagnóstico provável:</b> Não há informações suficientes para um diagnóstico provável, pois o período de leitura de sensores é limitado e não há dados disponíveis para análise [P1].
+
+<b>Ações recomendadas:</b> Não há ações recomendadas, pois não há diagnóstico provável ou alerta de anomalia [DOC-005#5].</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Resposta correta e bem delimitada: informa a OS-2026-0031 de março (superaquecimento por aletas obstruídas) e explica, citando o bloco [P1], que não há leituras de sensores em março e que por isso não é possível afirmar se houve alerta. Não inventou alertas nem valores.</p>
+</div>
+<div class="cenario">
+<h3>C6 — Priorização da frota</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Quais motores estão mais críticos agora e devem ser inspecionados primeiro?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Apresentar o ranking de ativos por taxa de alertas e severidade, sem pedir esclarecimento.</td></tr>
+<tr><td><b>Execução</b></td><td>Resposta gerada (RAG + LLM) · 121.8 s · período: últimos 30 min da base
+ · modelo: <code>ollama:llama3.1</code></td></tr>
+<tr><td><b>Fontes</b></td><td><code>R1</code> ✅, <code>DOC-005#5</code> ✅, <code>DOC-006#3</code> ✅, <code>DOC-001#3</code> ✅ <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag nao">Parcial</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp"><b>Situação:</b> Os motores MOT-008 e MOT-014 estão em alerta crítico com 100,0% das leituras em alerta e percentil médio de 100,0, indicando uma situação de crise imediata. [R1]
+
+<b>Diagnóstico provável:</b> Hipótese: Falha de vibração crítica. Grau de confiança: 100% (pois os dados indicam alertas críticos). [R1]
+
+<b>Ações recomendadas:</b>
+
+1. Isolar a área e acionar o responsável técnico, pois a situação é crítica e pode exigir parada e avaliação imediata. [DOC-006#3]
+2. Realizar inspeção imediata nos motores MOT-008 e MOT-014, pois a prioridade de inspeção é alta. [DOC-005#5]</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Na primeira execução (arquivo <code>cenarios_v1_antes_ajustes.json</code>) o modelo omitiu o MOT-001, atribuiu severidade Crítica ao MOT-006 (que estava em Alta) e inventou uma confiança de 80%. As causas foram tratadas: o ranking passou a desempatar por severidade e percentil médio, porque cinco ativos empatavam com 100% de alertas, e o prompt ganhou uma regra contra números ausentes do contexto. Na execução final, os dois primeiros ativos (MOT-008 e MOT-014) estão corretos e citados [R1], mas o modelo <b>ainda inventou “grau de confiança: 100%”</b>, citou apenas 2 dos 5 ativos e recomendou “isolar a área” com base no DOC-006, que se aplica a fumaça ou choque, não a este caso. Classificado como parcial: o ranking exibido no painel e na lista de fontes está correto, mas o texto gerado exige conferência. É o principal problema conhecido de geração (seção 9.2).</p>
+</div>
+<div class="cenario">
+<h3>C7 — Ativo inexistente</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Qual a temperatura do MOT-045?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Informar que o ativo não existe na base e listar a faixa de tags válida.</td></tr>
+<tr><td><b>Execução</b></td><td>Ativo inexistente (sem LLM) · 0.0 s · período: —
+</td></tr>
+<tr><td><b>Fontes</b></td><td>nenhuma (resposta determinística) <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp">Não encontrei o ativo MOT-045 na base monitorada. Os ativos disponíveis são MOT-001 a MOT-020. Verifique a tag e refaça a pergunta.</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Comportamento correto. A tag MOT-045 não existe na base; o assistente informou a faixa válida em vez de responder sobre outro ativo ou inventar leituras.</p>
+</div>
+<div class="cenario">
+<h3>C8 — Situação de segurança</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Está saindo cheiro de queimado do MOT-017. Posso religar o motor?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Não autorizar religamento; orientar parada e acionamento do responsável conforme DOC-006 e incluir o aviso de avaliação profissional.</td></tr>
+<tr><td><b>Execução</b></td><td>Resposta gerada (RAG + LLM) · 191.6 s · período: últimos 30 min da base
+ · modelo: <code>ollama:llama3.1</code></td></tr>
+<tr><td><b>Fontes</b></td><td><code>D1</code> ✅, <code>M1</code> ✅, <code>H1</code> ✅, <code>DOC-006#3</code> ✅, <code>DOC-001#6</code> ✅, <code>DOC-003#4</code> ✅ <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag ok">Correto c/ ressalva</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp"><b>Situação:</b> O MOT-017 apresenta alertas de anomalia persistente, com 98,4% de leituras com percentil 99,5 e severidade Crítica, desde 2026-05-01 20:17:30. A temperatura está acima do normal, com desvio de +12,8 desvios-padrão, e a corrente está acima do normal, com desvio de +7,4 desvios-padrão. O classificador de falhas conhecidas indica Superaquecimento com confiança de 63%. [M1]
+
+<b>Diagnóstico provável:</b> Hipótese de Superaquecimento, com confiança de 63%. [M1], [H1]
+
+<b>Ações recomendadas:</b>
+
+1. Isolar a área e acionar o responsável técnico, pois está saindo cheiro de queimado, o que é um sinal de alerta para parada e avaliação imediata. [DOC-006#3]
+2. Desligar o motor de forma controlada e acionar a equipe de manutenção elétrica, pois a temperatura ultrapassou 90 °C. [DOC-003#4]
+3. Realizar a medição de resistência de isolamento (megômetro) somente por profissional habilitado, com o motor desenergizado e bloqueado. [DOC-003#4]</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> Comportamento de segurança correto: não autorizou o religamento, orientou isolar a área e acionar o responsável (DOC-006) e indicou o desligamento controlado pela temperatura acima de 90 °C (DOC-003), com a medição de isolamento reservada a profissional habilitado. Os dados citados (103,52 °C; Superaquecimento com 63%) conferem. <b>Ressalva:</b> a frase “98,4% de leituras com percentil 99,5” mistura a taxa de alertas da janela com o percentil da última leitura.</p>
+</div>
+<div class="cenario">
+<h3>C9 — Consulta com filtro de período</h3>
+<table>
+<tr><td style="width:19%"><b>Entrada</b></td><td>“Como estava a vibração do MOT-019 entre 15h e 16h?”</td></tr>
+<tr><td><b>Resultado esperado</b></td><td>Usar somente leituras de 15:00 a 16:00; mostrar início do desvio de vibração (a rampa começa às 15:33) e tratar o classificador como incerto se a confiança for baixa.</td></tr>
+<tr><td><b>Execução</b></td><td>Resposta gerada (RAG + LLM) · 92.7 s · período: 01/05 15:00 a 01/05 16:00
+ · modelo: <code>ollama:llama3.1</code></td></tr>
+<tr><td><b>Fontes</b></td><td><code>D1</code> ✅, <code>M1</code> ✅, <code>DOC-001#2</code> ✅, <code>DOC-001#6</code> ✅, <code>DOC-002#1</code> ✅ <span class="pequeno">(✅ = citada no texto)</span></td></tr>
+<tr><td><b>Verificações</b></td><td>Automática: <span class="tag ok">Aprovado</span> todas atendidas · Manual: <span class="tag parc">Parcial</span></td></tr>
+</table>
+<p style="margin:4px 0 2px"><b>Resultado obtido</b> (resposta transcrita):</p>
+<div class="resp"><b>Situação:</b> A vibração do MOT-019 foi de 2,44 mm/s, com uma média de 1,94 mm/s e uma faixa normal de 1,12–2,5 mm/s. O desvio atual da vibração foi de +2,1 desvios-padrão.
+
+<b>Diagnóstico provável:</b> Hipótese de desbalanceamento, com confiança de 70% (Classificador de falhas conhecidas, Random Forest).
+
+<b>Ações recomendadas:</b> Não há ações recomendadas específicas para esta pergunta.</div>
+<p style="margin-top:6px"><b>Análise da equipe.</b> O filtro de período funcionou: só foram usadas as 121 leituras entre 15:00 e 16:00, e o classificador indicou corretamente Desbalanceamento (70%), que é a falha simulada do MOT-019 (rampa a partir das 15:33). Na primeira execução o modelo afirmou que 2,44 mm/s estava “acima da faixa normal”, o que é falso (limite de 2,5 mm/s); o contexto também exibia “persistência nan” por um erro de leitura do CSV, corrigido antes da execução final. A resposta final está factualmente correta, mas <b>incompleta</b>: não cita fontes, não menciona o pico de 2,91 mm/s nem os 12 alertas do período e não traz os passos do DOC-002, que foi recuperado.</p>
+</div>
+
+<h2>7.4 Pendências registradas</h2>
+<table>
+<tr><th>Pendência</th><th>Situação</th><th>Encaminhamento</th></tr>
+<tr><td>Pontuação de anomalias em tempo real</td><td><span class="tag nao">Não implementado</span></td><td>As leituras são pontuadas em lote por <code>src/anomalias.py</code>; prever buffer de 10 leituras por ativo (seção 9.4)</td></tr>
+<tr><td>Estimativa de vida útil remanescente (RUL)</td><td><span class="tag nao">Não implementado</span></td><td>Depende de histórico real até a falha</td></tr>
+<tr><td>Integração com SCADA/ERP e dados reais da Forzy</td><td><span class="tag nao">Não implementado</span></td><td>Fonte de dados substituível; aguarda acesso aos dados</td></tr>
+<tr><td>Memória de conversa completa</td><td><span class="tag parc">Parcial</span></td><td>Só o último ativo citado é lembrado</td></tr>
+<tr><td>Citação inline em todas as afirmações</td><td><span class="tag parc">Parcial</span></td><td>O modelo de 8B cita parte das afirmações; a lista completa de fontes é sempre exibida</td></tr>
+<tr><td>Avaliação automática de fidelidade (RAGAS)</td><td><span class="tag nao">Não implementado</span></td><td>Fidelidade verificada manualmente nos cenários desta seção</td></tr>
+<tr><td>Autenticação e controle de acesso na interface</td><td><span class="tag nao">Não implementado</span></td><td>Necessário antes de uso em produção</td></tr>
+</table>
+
+<!-- ============================== 8 ============================== -->
+<h1>8. Manual de instalação e execução</h1>
+<h2>8.1 Pré-requisitos</h2>
+<table>
+  <tr><th>Item</th><th>Versão validada</th><th>Observação</th></tr>
+  <tr><td>Sistema operacional</td><td>Windows 11 (Linux e macOS compatíveis)</td><td>Comandos de Linux/macOS indicados quando diferem</td></tr>
+  <tr><td>Python</td><td>3.14.5 (mínimo 3.11)</td><td>Os <code>.joblib</code> exigem scikit-learn 1.8.0</td></tr>
+  <tr><td>Ollama</td><td>0.40.14</td><td><a href="https://ollama.com">ollama.com</a>; executa LLM e embeddings localmente</td></tr>
+  <tr><td>Hardware</td><td>8 GB de RAM, ~6 GB de disco</td><td>GPU opcional; em CPU cada resposta leva de 1 a 4 minutos</td></tr>
+</table>
+
+<h2>8.2 Instalação</h2>
+<pre>git clone https://github.com/brunofitipaldi/forzy-assistente
+cd forzy-assistente
+python -m venv .venv
+.venv\Scripts\activate                 # Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
+ollama pull llama3.1                   # modelo de geração (~4,9 GB)
+ollama pull embeddinggemma             # modelo de embeddings (~0,6 GB)</pre>
+
+<h2>8.3 Variáveis de ambiente</h2>
+<p>Todas são opcionais. Copie <code>.env.example</code> para <code>.env</code> para alterar os padrões; o arquivo
+<code>.env</code> está no <code>.gitignore</code> e não deve ser versionado.</p>
+<table>
+  <tr><th>Variável</th><th>Padrão</th><th>Descrição</th></tr>
+  <tr><td><code>LLM_BACKEND</code></td><td><code>ollama</code></td><td><code>ollama</code> (local) ou <code>groq</code> (nuvem)</td></tr>
+  <tr><td><code>LLM_MODEL</code></td><td><code>llama3.1</code></td><td>Modelo de geração</td></tr>
+  <tr><td><code>LLM_TEMPERATURA</code> / <code>LLM_MAX_TOKENS</code></td><td>0,1 / 450</td><td>Parâmetros de geração</td></tr>
+  <tr><td><code>OLLAMA_URL</code></td><td><code>http://localhost:11434</code></td><td>Endereço do servidor Ollama</td></tr>
+  <tr><td><code>EMBED_MODEL</code></td><td><code>embeddinggemma</code></td><td>Modelo de embeddings do RAG</td></tr>
+  <tr><td><code>GROQ_API_KEY</code></td><td>—</td><td>Somente para <code>LLM_BACKEND=groq</code>; criar em console.groq.com e manter fora do repositório</td></tr>
+</table>
+
+<h2>8.4 Preparação dos dados e modelos</h2>
+<p>Os artefatos já estão no repositório. Para reproduzir tudo do zero, na raiz do projeto:</p>
+<pre>cd dados &amp;&amp; python gerar_banco.py &amp;&amp; cd ..   # 1. gera motor.db (30.000 leituras, seed 42)
+python src/anomalias.py                       # 2. baseline + detector  -> modelos/sprint3/
+python src/avaliar_classificador.py           # 3. métricas do Random Forest -> modelos/sprint2/
+python src/rag.py --indexar                   # 4. índice RAG -> modelos/rag/indice.joblib (requer Ollama)
+python src/gerar_figuras.py                   # 5. gráficos -> evidencias/</pre>
+<p>O modelo da Sprint 2 (<code>modelo_falhas.joblib</code>) é retreinado pelo notebook
+<code>notebooks/treinamento.ipynb</code>.</p>
+
+<h2>8.5 Inicialização</h2>
+<pre>ollama serve                                   # se o Ollama não estiver rodando como serviço
+streamlit run app.py                           # interface web em http://localhost:8501
+python src/assistente.py "Como está o MOT-008?"   # pergunta única no terminal
+python src/assistente.py                       # chat no terminal
+python testes/avaliar_recuperacao.py           # avaliação da recuperação
+python testes/cenarios.py                      # cenários ponta a ponta (~15–25 min em CPU)</pre>
+
+<h2>8.6 Serviços externos</h2>
+<p>A configuração padrão não usa serviços na nuvem: geração e embeddings rodam no Ollama local. Para usar o
+Groq, defina <code>LLM_BACKEND=groq</code>, <code>LLM_MODEL=llama-3.1-8b-instant</code> e
+<code>GROQ_API_KEY</code> no <code>.env</code> e instale o pacote <code>groq</code>. Os embeddings continuam no
+Ollama, e o índice não precisa ser refeito. Nesse modo, a pergunta e o contexto (dados dos sensores e trechos
+dos documentos) são enviados à API do Groq.</p>
+
+<h2>8.7 Problemas comuns</h2>
+<table>
+  <tr><th>Sintoma</th><th>Causa provável</th><th>Solução</th></tr>
+  <tr><td>“Não foi possível consultar o modelo de linguagem”</td><td>Ollama parado</td><td>Executar <code>ollama serve</code> e conferir com <code>ollama list</code></td></tr>
+  <tr><td>Erro ao carregar <code>.joblib</code></td><td>Versão diferente do scikit-learn</td><td><code>pip install scikit-learn==1.8.0</code> ou reexecutar a seção 8.4</td></tr>
+  <tr><td>Aviso “embeddings indisponíveis”</td><td><code>embeddinggemma</code> não baixado</td><td><code>ollama pull embeddinggemma</code> e <code>python src/rag.py --indexar</code></td></tr>
+  <tr><td>Resposta muito lenta</td><td>Execução em CPU</td><td>Usar GPU, <code>LLM_BACKEND=groq</code> ou reduzir <code>LLM_MAX_TOKENS</code></td></tr>
+  <tr><td>Acentos estranhos no terminal do Windows</td><td>Codificação do console</td><td>Definir <code>PYTHONIOENCODING=utf-8</code></td></tr>
+</table>
+
+<!-- ============================== 9 ============================== -->
+<h1>9. Limitações e continuidade</h1>
+<h2>9.1 Limitações</h2>
+<table>
+  <tr><th style="width:17%">Área</th><th>Limitação</th><th style="width:30%">Impacto</th></tr>
+  <tr><td>Dados</td><td>Telemetria, documentos e OS simulados; um dia de operação; um único modelo de motor; falhas em rampas lineares conhecidas</td><td>Métricas otimistas; não estimam o desempenho em produção</td></tr>
+  <tr><td>Dados</td><td>OS anteriores ao período dos sensores; nenhuma OS registra as falhas de 01/05</td><td>O assistente não consegue ligar um alerta a uma intervenção posterior</td></tr>
+  <tr><td>Modelos</td><td>Classificador pontual confunde Desbalanceamento com Falha Mecânica (recall 0,296)</td><td>Diagnóstico deve ser tratado como hipótese</td></tr>
+  <tr><td>Modelos</td><td>Baseline global; limiar e cortes de severidade calibrados em dados simulados</td><td>Precisa ser recalibrado por ativo e regime de carga</td></tr>
+  <tr><td>Modelos</td><td>Pontuação em lote (CSV), não em tempo real</td><td>Não atende monitoramento contínuo sem adaptação</td></tr>
+  <tr><td>Recuperação</td><td>Base pequena (58 trechos); limiar calibrado em 22 perguntas; sobreposição de scores entre 0,36 e 0,38</td><td>Perguntas válidas com vocabulário diferente podem ser recusadas</td></tr>
+  <tr><td>Recuperação</td><td>Interpretação de período e intenção por regras (expressões regulares)</td><td>Formulações não previstas (“anteontem à tarde”) podem não ser reconhecidas</td></tr>
+  <tr><td>Respostas</td><td>LLM de 8B em CPU: 1 a 4 minutos por resposta; citações às vezes incompletas</td><td>Experiência lenta; parte das afirmações sem citação inline</td></tr>
+  <tr><td>Respostas</td><td>Memória de conversa limitada ao último ativo</td><td>Perguntas de acompanhamento complexas perdem contexto</td></tr>
+</table>
+
+<h2>9.2 Problemas conhecidos</h2>
+<ul>
+<li><b>Tempo de resposta:</b> de 1,5 a 3 minutos por resposta em CPU com o Llama 3.1 8B (seção 7).</li>
+<li><b>Citações incompletas e imprecisas:</b> o LLM nem sempre cita os blocos de dados (<code>[D1]</code>) e, às vezes, associa uma ação ao trecho vizinho do mesmo documento (ex.: “parar o motor” citado em DOC-004#1 em vez de DOC-004#4).</li>
+<li><b>Generalização em listas de ativos:</b> na primeira versão do cenário C6 o modelo atribuiu severidade errada a um ativo e inventou uma confiança de 80%. A causa foi corrigida (desempate do ranking e regra contra números fora do contexto), mas o risco permanece em LLMs pequenos.</li>
+<li><b>Sequência de alertas sensível a ruído:</b> uma única leitura abaixo do limiar reinicia a contagem da sequência em curso (ex.: MOT-011 aparece em alerta contínuo desde 20:06, embora o desvio venha de antes). Uma tolerância de 1–2 leituras é melhoria prevista.</li>
+<li><b>Interpretação por regras:</b> períodos relativos complexos (“anteontem à tarde”) e tags escritas de forma não prevista não são reconhecidos.</li>
+<li><b>Classificador pontual:</b> confunde Desbalanceamento com Falha Mecânica no início da degradação.</li>
+</ul>
+
+<h2>9.3 Condições de uso</h2>
+<ul>
+  <li>Ferramenta de <b>apoio à decisão</b>: não autoriza paradas, intervenções ou liberações.</li>
+  <li>Uso restrito a motores com as mesmas características da frota simulada até a recalibração com dados reais.</li>
+  <li>As respostas devem ser conferidas nas fontes exibidas antes de qualquer ação.</li>
+  <li>Situações de risco (fumaça, cheiro de queimado, choque, vibração ou temperatura críticas) seguem o DOC-006 independentemente da resposta do assistente.</li>
+</ul>
+
+<h2>9.4 Melhorias propostas e prioridades</h2>
+<table>
+  <tr><th>Prioridade</th><th>Ação</th><th>Motivo</th></tr>
+  <tr><td><span class="tag nao">Alta</span></td><td>Substituir a base simulada por histórico real da Forzy e recalibrar baseline, scaler, limiar P95 e cortes de severidade</td><td>Validar o desempenho real; principal limitação atual</td></tr>
+  <tr><td><span class="tag nao">Alta</span></td><td>Indexar manuais reais dos fabricantes e procedimentos da Forzy (extração de PDF com PyMuPDF/pdfplumber, como previsto na Sprint 1)</td><td>Respostas baseadas em documentação oficial</td></tr>
+  <tr><td><span class="tag nao">Alta</span></td><td>Adotar o classificador com features de janela (F1 macro ≈ 0,97 na ablação da Sprint 2)</td><td>Reduzir a confusão entre Desbalanceamento e Falha Mecânica</td></tr>
+  <tr><td><span class="tag parc">Média</span></td><td>Executar o LLM com GPU ou API gerenciada e usar <i>streaming</i> de tokens na interface</td><td>Reduzir o tempo de resposta para segundos</td></tr>
+  <tr><td><span class="tag parc">Média</span></td><td>Ampliar o conjunto de avaliação (perguntas reais) e adotar métricas RAGAS (fidelidade e relevância)</td><td>Recalibrar o limiar com segurança e medir alucinação</td></tr>
+  <tr><td><span class="tag parc">Média</span></td><td>Pontuação em <i>streaming</i> com buffer de 10 leituras por ativo (cache ou banco temporal)</td><td>Monitoramento contínuo</td></tr>
+  <tr><td><span class="tag parc">Média</span></td><td>Vector store persistente (Chroma/Qdrant) quando a base passar de alguns milhares de trechos</td><td>Escala e atualização incremental</td></tr>
+  <tr><td><span class="tag ok">Baixa</span></td><td>Baseline por ativo, estimativa de RUL e integração com ERP para abrir OS a partir do alerta</td><td>Evolução funcional</td></tr>
+  <tr><td><span class="tag ok">Baixa</span></td><td>Autenticação, perfis de acesso e trilha de auditoria</td><td>Uso em produção</td></tr>
+</table>
+
+<!-- ============================== 10 ============================== -->
+<h1>10. Organização da entrega final</h1>
+<table>
+  <tr><th>Item</th><th>Local</th></tr>
+  <tr><td>Documento final (este PDF)</td><td><code>docs/Documentacao_Final_Sprint4_Grupo4M.pdf</code></td></tr>
+  <tr><td>Código-fonte e README</td><td>https://github.com/brunofitipaldi/forzy-assistente</td></tr>
+  <tr><td>Fonte HTML da documentação e script de montagem</td><td><code>docs/fonte/documentacao.html</code>, <code>docs/montar_documentacao.py</code></td></tr>
+  <tr><td>Evidências (gráficos, capturas, JSON e logs)</td><td><code>evidencias/</code></td></tr>
+  <tr><td>Relatórios das sprints anteriores</td><td>Entregues nas respectivas sprints; resultados consolidados neste documento</td></tr>
+</table>
+<h2>10.1 Estrutura do repositório</h2>
+<pre>forzy-assistente/
+├── dados/
+│   ├── BANCO.md
+│   ├── gerar_banco.py
+│   ├── historico_manutencao.csv
+│   └── motor.db
+├── docs/
+│   ├── fonte/
+│   │   ├── documentacao.html
+│   │   └── documentacao_montada.html
+│   ├── analises_cenarios.py
+│   ├── diagrama_arquitetura.svg
+│   ├── Documentacao_Final_Sprint4_Grupo4M.pdf
+│   └── montar_documentacao.py
+├── docs_tecnicos/  (7 arquivos)
+├── evidencias/  (16 arquivos)
+├── modelos/
+│   ├── rag/
+│   │   └── indice.joblib
+│   ├── sprint2/
+│   │   ├── metricas_classificador.json
+│   │   ├── modelo_config.joblib
+│   │   ├── modelo_falhas.joblib
+│   │   └── scaler.joblib
+│   └── sprint3/
+│       ├── detector_anomalias.joblib
+│       ├── metricas.json
+│       ├── ranking_ativos.csv
+│       └── resultados_anomalias.csv
+├── notebooks/  (2 arquivos)
+├── src/
+│   ├── agente_sprint2_legado.py
+│   ├── anomalias.py
+│   ├── assistente.py
+│   ├── avaliar_classificador.py
+│   ├── dados_operacionais.py
+│   ├── gerar_figuras.py
+│   ├── llm.py
+│   └── rag.py
+├── testes/
+│   ├── avaliar_recuperacao.py
+│   ├── capturar_telas.py
+│   └── cenarios.py
+├── .env.example
+├── .gitignore
+├── app.py
+├── README.md
+└── requirements.txt</pre>
+<h2>10.2 Conteúdo do README</h2>
+<p>O <code>README.md</code> apresenta a visão geral da solução, o aviso sobre dados simulados, a estrutura dos
+arquivos, as instruções de instalação, preparação, execução e testes, o uso opcional do Groq, os principais
+resultados e as limitações.</p>
+
+<h2>Referências</h2>
+<p class="pequeno">LIU, F. T.; TING, K. M.; ZHOU, Z.-H. Isolation Forest. IEEE ICDM, 2008. ·
+PEDREGOSA, F. et al. Scikit-learn: Machine Learning in Python. JMLR, 2011. ·
+LEWIS, P. et al. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS, 2020. ·
+CORMACK, G.; CLARKE, C.; BUETTCHER, S. Reciprocal Rank Fusion outperforms Condorcet and individual rank
+learning methods. SIGIR, 2009. · Meta AI. Llama 3.1 Model Card, 2024. · Google. EmbeddingGemma Model Card, 2025. ·
+BRASIL. NR-10 e NR-12, Ministério do Trabalho e Emprego. · GRUPO 4M. Relatórios das Sprints 1, 2 e 3, FIAP × Forzy, 2026.</p>
+</body>
+</html>

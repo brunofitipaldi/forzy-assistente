@@ -1,0 +1,19 @@
+# FIAP x Forzy | Challenge IA | Grupo 4M — Sprint 4
+# Versoes validadas em Windows 11 + Python 3.14.5. Instalar com: pip install -r requirements.txt
+numpy==2.4.4
+pandas==3.0.3
+scikit-learn==1.8.0     # obrigatorio nesta versao para carregar os .joblib sem retreinar
+joblib==1.5.3
+matplotlib==3.11.2
+requests==2.34.2
+streamlit==1.58.0
+
+# Opcional: backend de LLM na nuvem (LLM_BACKEND=groq)
+# groq>=0.9
+
+# Externo (nao e pacote pip): Ollama >= 0.40 com os modelos
+#   ollama pull llama3.1        (geracao)
+#   ollama pull embeddinggemma  (embeddings do RAG)
+
+# Opcional: capturas de tela das evidencias e geracao do PDF (usa o Edge/Chrome instalado)
+# playwright==1.64.1

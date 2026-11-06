@@ -1,0 +1,462 @@
+{
+  "C1": {
+    "id": "C1",
+    "nome": "Consulta sobre falha/anomalia em um ativo",
+    "pergunta": "Como está o MOT-008 agora? Há alguma anomalia?",
+    "esperado": "Usar dados dos sensores e saídas dos modelos do MOT-008; informar severidade Crítica e alerta persistente, vibração como sensor de maior desvio, hipótese de Falha Mecânica com a confiança do classificador, citar fontes e incluir aviso de avaliação profissional.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Como está o MOT-008 agora? Há alguma anomalia?",
+      "resposta": "**Situação:** O MOT-008 apresenta uma combinação de sinais de alerta de anomalia, incluindo vibração elevada, aumento de temperatura e corrente, e queda de rotação. O detector de anomalias identificou uma persistência de alertas críticos em todas as leituras do período, com o sensor de maior desvio sendo a vibração [M1]. O classificador de falhas conhecidas também identificou uma falha mecânica como a hipótese mais provável, com confiança de 77% [M1].\n\n**Diagnóstico provável:** Falha mecânica, com confiança de 77% [M1].\n\n**Ações recomendadas:**\n\n1. Parar o MOT-008 para inspeção e diagnóstico [DOC-004#1].\n2. Verificar a vibração e a temperatura do motor [DOC-004#1].\n3. Investigar possíveis causas de falha mecânica, como desgaste ou falta de lubrificação dos rolamentos, desalinhamento entre motor e carga, ou roçamento entre rotor e estator [DOC-004#2].\n\n⚠️ **Avaliação profissional obrigatória:** a situação envolve severidade crítica ou risco à segurança. As indicações acima apoiam a investigação, mas a decisão de parada, intervenção ou liberação deve ser tomada por profissional habilitado (NR-10/NR-12), conforme DOC-006.\n\n**Fontes consultadas:** [D1] Leituras de MOT-008; [M1] Modelos de IA — MOT-008; [H1] OS-2026-0009; [H2] OS-2026-0036; [H3] OS-2026-0049; [DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha; [DOC-004#1] POP de troubleshooting — Falha mecânica (rolamentos, desalinhamento, roçamento) — 1. Sintomas; [DOC-004#2] POP de troubleshooting — Falha mecânica (rolamentos, desalinhamento, roçamento) — 2. Causas prováveis",
+      "tipo": "llm",
+      "ativos": [
+        "MOT-008"
+      ],
+      "periodo": "últimos 30 min da base",
+      "fontes": [
+        {
+          "id": "D1",
+          "tipo": "dados de sensores",
+          "titulo": "Leituras de MOT-008",
+          "texto": "Ativo MOT-008 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)\n- Rotação: atual 3267.9 RPM (média 3316.94, mín 3240.1, máx 3381.0); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -13.4 desvios-padrão\n- Vibração: atual 7.64 mm/s (média 7.54, mín 6.78, máx 8.1); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +19.5 desvios-padrão\n- Temperatura: atual 89.82 °C (média 84.17, mín 76.03, máx 90.11); faixa normal do baseline 57.92–71.99 °C; desvio atual +8.3 desvios-padrão\n- Corrente: atual 15.47 A (média 15.15, mín 13.26, máx 16.61); faixa normal do baseline 10.1–12.91 A; desvio atual +6.6 desvios-padrão"
+        },
+        {
+          "id": "M1",
+          "tipo": "resultado de modelo",
+          "titulo": "Modelos de IA — MOT-008",
+          "texto": "Detector de anomalias (Isolation Forest temporal) para MOT-008:\n- última leitura 2026-05-01 20:29:30: percentil 100.0, severidade Crítica, persistência Persistente, sensor de maior desvio: Vibração\n- alertas no período: 61 de 61 leituras (100.0%); primeiro alerta: 2026-05-01 19:59:30; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Falha Mecânica com confiança 77%; distribuição Normal 6%, Desbalanceamento 7%, Superaquecimento 11%, Falha Mecânica 77%"
+        },
+        {
+          "id": "H1",
+          "tipo": "histórico de manutenção",
+          "titulo": "OS-2026-0009",
+          "texto": "OS-2026-0009 | MOT-008 | corretiva | aberta 2026-01-09 fechada 2026-01-10 | status fechada | falha: Falha Mecanica | Ruido metalico no mancal dianteiro e vibracao de 5.2 mm/s | causa raiz: Rolamento dianteiro com pista danificada | ação: Substituicao do rolamento dianteiro (6205-2Z) | parada 10.0 h"
+        },
+        {
+          "id": "H2",
+          "tipo": "histórico de manutenção",
+          "titulo": "OS-2026-0036",
+          "texto": "OS-2026-0036 | MOT-008 | inspecao | aberta 2026-03-25 fechada 2026-03-25 | status fechada | falha: Falha Mecanica | Vibracao axial acima do historico em coleta mensal | causa raiz: Desalinhamento de 0.12 mm no acoplamento | ação: Realinhamento a laser; vibracao 2.0 mm/s apos ajuste | parada 3.0 h"
+        },
+        {
+          "id": "H3",
+          "tipo": "histórico de manutenção",
+          "titulo": "OS-2026-0049",
+          "texto": "OS-2026-0049 | MOT-008 | preventiva | aberta 2026-04-28 | status aberta | falha: - | Relubrificacao programada | causa raiz: - | ação: Aguardando janela de parada | parada 0.0 h"
+        },
+        {
+          "id": "DOC-001#6",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha",
+          "texto": "Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.",
+          "score": 0.517,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-004#1",
+          "tipo": "documento técnico",
+          "titulo": "POP de troubleshooting — Falha mecânica (rolamentos, desalinhamento, roçamento) — 1. Sintomas",
+          "texto": "Combinação de vibração elevada (acima de 4,5 mm/s), aumento de temperatura e de corrente e queda de rotação abaixo de 3480 RPM. É o modo de falha mais severo da frota, porque indica esforço mecânico anormal e pode evoluir para travamento.",
+          "score": 0.474,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-004#2",
+          "tipo": "documento técnico",
+          "titulo": "POP de troubleshooting — Falha mecânica (rolamentos, desalinhamento, roçamento) — 2. Causas prováveis",
+          "texto": "Desgaste ou falta de lubrificação dos rolamentos; desalinhamento entre motor e carga; folga mecânica no mancal; roçamento entre rotor e estator ou entre ventilador e tampa; carga travando parcialmente.",
+          "score": 0.4,
+          "origem": "SIMULADO"
+        }
+      ],
+      "contexto": "[D1] Ativo MOT-008 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)\n- Rotação: atual 3267.9 RPM (média 3316.94, mín 3240.1, máx 3381.0); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -13.4 desvios-padrão\n- Vibração: atual 7.64 mm/s (média 7.54, mín 6.78, máx 8.1); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +19.5 desvios-padrão\n- Temperatura: atual 89.82 °C (média 84.17, mín 76.03, máx 90.11); faixa normal do baseline 57.92–71.99 °C; desvio atual +8.3 desvios-padrão\n- Corrente: atual 15.47 A (média 15.15, mín 13.26, máx 16.61); faixa normal do baseline 10.1–12.91 A; desvio atual +6.6 desvios-padrão\n\n[M1] Detector de anomalias (Isolation Forest temporal) para MOT-008:\n- última leitura 2026-05-01 20:29:30: percentil 100.0, severidade Crítica, persistência Persistente, sensor de maior desvio: Vibração\n- alertas no período: 61 de 61 leituras (100.0%); primeiro alerta: 2026-05-01 19:59:30; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Falha Mecânica com confiança 77%; distribuição Normal 6%, Desbalanceamento 7%, Superaquecimento 11%, Falha Mecânica 77%\n\n[H1] OS-2026-0009 | MOT-008 | corretiva | aberta 2026-01-09 fechada 2026-01-10 | status fechada | falha: Falha Mecanica | Ruido metalico no mancal dianteiro e vibracao de 5.2 mm/s | causa raiz: Rolamento dianteiro com pista danificada | ação: Substituicao do rolamento dianteiro (6205-2Z) | parada 10.0 h\n\n[H2] OS-2026-0036 | MOT-008 | inspecao | aberta 2026-03-25 fechada 2026-03-25 | status fechada | falha: Falha Mecanica | Vibracao axial acima do historico em coleta mensal | causa raiz: Desalinhamento de 0.12 mm no acoplamento | ação: Realinhamento a laser; vibracao 2.0 mm/s apos ajuste | parada 3.0 h\n\n[H3] OS-2026-0049 | MOT-008 | preventiva | aberta 2026-04-28 | status aberta | falha: - | Relubrificacao programada | causa raiz: - | ação: Aguardando janela de parada | parada 0.0 h\n\n[DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha: Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.\n\n[DOC-004#1] POP de troubleshooting — Falha mecânica (rolamentos, desalinhamento, roçamento) — 1. Sintomas: Combinação de vibração elevada (acima de 4,5 mm/s), aumento de temperatura e de corrente e queda de rotação abaixo de 3480 RPM. É o modo de falha mais severo da frota, porque indica esforço mecânico anormal e pode evoluir para travamento.\n\n[DOC-004#2] POP de troubleshooting — Falha mecânica (rolamentos, desalinhamento, roçamento) — 2. Causas prováveis: Desgaste ou falta de lubrificação dos rolamentos; desalinhamento entre motor e carga; folga mecânica no mancal; roçamento entre rotor e estator ou entre ventilador e tampa; carga travando parcialmente.",
+      "aviso_profissional": true,
+      "modelo": "ollama:llama3.1",
+      "segundos": 107.9,
+      "citadas": [
+        "DOC-004#1",
+        "DOC-004#2",
+        "M1"
+      ]
+    }
+  },
+  "C2": {
+    "id": "C2",
+    "nome": "Dados operacionais + documentação técnica",
+    "pergunta": "O MOT-011 está esquentando? O que devo verificar segundo o procedimento?",
+    "esperado": "Combinar as leituras de temperatura/corrente do MOT-011 com o POP de superaquecimento (DOC-003) e com o histórico de OS do ativo; listar verificações do procedimento com citação.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "O MOT-011 está esquentando? O que devo verificar segundo o procedimento?",
+      "resposta": "**Situação:** O MOT-011 está apresentando uma temperatura de carcaça acima do normal (101.51 °C) e um desvio de +12.2 desvios-padrão em relação ao baseline [D1]. O detector de anomalias identificou a temperatura como o sensor de maior desvio [M1].\n\n**Diagnóstico provável:** Hipótese de Superaquecimento com confiança de 66% [M1]. A distribuição de falhas conhecidas também sugere Superaquecimento [M1].\n\n**Ações recomendadas:**\n\n1. Verificar se a carga acionada mudou [DOC-003#3].\n2. Limpar e inspecionar aletas e entrada de ar [DOC-003#3].\n3. Medir a temperatura ambiente próxima ao motor [DOC-003#3].\n4. Medir tensão de alimentação e comparar com a nominal; desvio acima de 10% exige correção [DOC-003#3].\n5. Comparar a corrente medida com a corrente nominal de 11,5 A; corrente acima de 13,5 A por mais de 10 minutos indica sobrecarga [DOC-003#3].\n\n⚠️ **Avaliação profissional obrigatória:** a situação envolve severidade crítica ou risco à segurança. As indicações acima apoiam a investigação, mas a decisão de parada, intervenção ou liberação deve ser tomada por profissional habilitado (NR-10/NR-12), conforme DOC-006.\n\n**Fontes consultadas:** [D1] Leituras de MOT-011; [M1] Modelos de IA — MOT-011; [H1] OS-2026-0029; [DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha; [DOC-003#3] POP de troubleshooting — Superaquecimento e sobrecorrente — 3. Verificações iniciais; [DOC-003#1] POP de troubleshooting — Superaquecimento e sobrecorrente — 1. Sintomas",
+      "tipo": "llm",
+      "ativos": [
+        "MOT-011"
+      ],
+      "periodo": "últimos 30 min da base",
+      "fontes": [
+        {
+          "id": "D1",
+          "tipo": "dados de sensores",
+          "titulo": "Leituras de MOT-011",
+          "texto": "Ativo MOT-011 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)\n- Rotação: atual 3556.0 RPM (média 3601.33, mín 3549.2, máx 3660.9); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -1.8 desvios-padrão\n- Vibração: atual 1.72 mm/s (média 1.86, mín 0.93, máx 2.73); faixa normal do baseline 1.12–2.5 mm/s; desvio atual -0.3 desvios-padrão\n- Temperatura: atual 101.51 °C (média 98.2, mín 90.75, máx 103.85); faixa normal do baseline 57.92–71.99 °C; desvio atual +12.2 desvios-padrão\n- Corrente: atual 16.12 A (média 16.26, mín 14.85, máx 18.39); faixa normal do baseline 10.1–12.91 A; desvio atual +7.7 desvios-padrão"
+        },
+        {
+          "id": "M1",
+          "tipo": "resultado de modelo",
+          "titulo": "Modelos de IA — MOT-011",
+          "texto": "Detector de anomalias (Isolation Forest temporal) para MOT-011:\n- última leitura 2026-05-01 20:29:30: percentil 99.3, severidade Crítica, persistência Persistente, sensor de maior desvio: Temperatura\n- alertas no período: 60 de 61 leituras (98.4%); primeiro alerta: 2026-05-01 19:59:30; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Superaquecimento com confiança 66%; distribuição Normal 33%, Desbalanceamento 0%, Superaquecimento 66%, Falha Mecânica 1%"
+        },
+        {
+          "id": "H1",
+          "tipo": "histórico de manutenção",
+          "titulo": "OS-2026-0029",
+          "texto": "OS-2026-0029 | MOT-011 | corretiva | aberta 2026-03-10 fechada 2026-03-11 | status fechada | falha: Superaquecimento | Corrente de 13.8 A e temperatura de 81 C | causa raiz: Tensao de alimentacao 9% abaixo da nominal | ação: Correcao do tap do transformador pela equipe eletrica | parada 5.0 h"
+        },
+        {
+          "id": "DOC-001#6",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha",
+          "texto": "Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.",
+          "score": 0.54,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-003#3",
+          "tipo": "documento técnico",
+          "titulo": "POP de troubleshooting — Superaquecimento e sobrecorrente — 3. Verificações iniciais",
+          "texto": "Verificar se a carga acionada mudou (processo, produto, regulagem). Limpar e inspecionar aletas e entrada de ar. Medir a temperatura ambiente próxima ao motor. Medir tensão de alimentação e comparar com a nominal; desvio acima de 10% exige correção. Comparar a corrente medida com a corrente nominal de 11,5 A; corrente acima de 13,5 A por mais de 10 minutos indica sobrecarga.",
+          "score": 0.569,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-003#1",
+          "tipo": "documento técnico",
+          "titulo": "POP de troubleshooting — Superaquecimento e sobrecorrente — 1. Sintomas",
+          "texto": "Temperatura de carcaça acima de 75 °C com tendência de subida, acompanhada de aumento da corrente acima de 12,9 A. A vibração e a rotação permanecem próximas do nominal. O detector de anomalias aponta temperatura ou corrente como sensor de maior desvio.",
+          "score": 0.528,
+          "origem": "SIMULADO"
+        }
+      ],
+      "contexto": "[D1] Ativo MOT-011 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)\n- Rotação: atual 3556.0 RPM (média 3601.33, mín 3549.2, máx 3660.9); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -1.8 desvios-padrão\n- Vibração: atual 1.72 mm/s (média 1.86, mín 0.93, máx 2.73); faixa normal do baseline 1.12–2.5 mm/s; desvio atual -0.3 desvios-padrão\n- Temperatura: atual 101.51 °C (média 98.2, mín 90.75, máx 103.85); faixa normal do baseline 57.92–71.99 °C; desvio atual +12.2 desvios-padrão\n- Corrente: atual 16.12 A (média 16.26, mín 14.85, máx 18.39); faixa normal do baseline 10.1–12.91 A; desvio atual +7.7 desvios-padrão\n\n[M1] Detector de anomalias (Isolation Forest temporal) para MOT-011:\n- última leitura 2026-05-01 20:29:30: percentil 99.3, severidade Crítica, persistência Persistente, sensor de maior desvio: Temperatura\n- alertas no período: 60 de 61 leituras (98.4%); primeiro alerta: 2026-05-01 19:59:30; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Superaquecimento com confiança 66%; distribuição Normal 33%, Desbalanceamento 0%, Superaquecimento 66%, Falha Mecânica 1%\n\n[H1] OS-2026-0029 | MOT-011 | corretiva | aberta 2026-03-10 fechada 2026-03-11 | status fechada | falha: Superaquecimento | Corrente de 13.8 A e temperatura de 81 C | causa raiz: Tensao de alimentacao 9% abaixo da nominal | ação: Correcao do tap do transformador pela equipe eletrica | parada 5.0 h\n\n[DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha: Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.\n\n[DOC-003#3] POP de troubleshooting — Superaquecimento e sobrecorrente — 3. Verificações iniciais: Verificar se a carga acionada mudou (processo, produto, regulagem). Limpar e inspecionar aletas e entrada de ar. Medir a temperatura ambiente próxima ao motor. Medir tensão de alimentação e comparar com a nominal; desvio acima de 10% exige correção. Comparar a corrente medida com a corrente nominal de 11,5 A; corrente acima de 13,5 A por mais de 10 minutos indica sobrecarga.\n\n[DOC-003#1] POP de troubleshooting — Superaquecimento e sobrecorrente — 1. Sintomas: Temperatura de carcaça acima de 75 °C com tendência de subida, acompanhada de aumento da corrente acima de 12,9 A. A vibração e a rotação permanecem próximas do nominal. O detector de anomalias aponta temperatura ou corrente como sensor de maior desvio.",
+      "aviso_profissional": true,
+      "modelo": "ollama:llama3.1",
+      "segundos": 184.6,
+      "citadas": [
+        "D1",
+        "DOC-003#3",
+        "M1"
+      ]
+    }
+  },
+  "C3": {
+    "id": "C3",
+    "nome": "Informação insuficiente (fora do escopo)",
+    "pergunta": "Qual é a pressão de descarga recomendada para o compressor GA55 da linha 2?",
+    "esperado": "Não inventar valor; informar que não há dados nem documentos sobre o equipamento e explicar o que o assistente consegue responder.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Qual é a pressão de descarga recomendada para o compressor GA55 da linha 2?",
+      "resposta": "Não encontrei informações suficientes para responder com segurança: não há dados operacionais nem trechos de documentação relevantes para a pergunta.\n\nPosso ajudar com: situação dos sensores e alertas de um motor (MOT-001 a MOT-020), diagnóstico provável de falhas conhecidas, histórico de ordens de serviço, ranking da frota e procedimentos de troubleshooting dos documentos técnicos indexados. Se a informação existir em outra fonte, ela precisa ser incluída na base documental.",
+      "tipo": "insuficiente",
+      "ativos": [],
+      "periodo": "últimos 30 min da base",
+      "fontes": [],
+      "contexto": "",
+      "aviso_profissional": false,
+      "modelo": "",
+      "segundos": 2.3,
+      "citadas": []
+    }
+  },
+  "C4": {
+    "id": "C4",
+    "nome": "Pergunta ambígua (ativo não informado)",
+    "pergunta": "Como está o motor? Está normal?",
+    "esperado": "Pedir esclarecimento sobre qual ativo consultar, sem chamar o LLM.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Como está o motor? Está normal?",
+      "resposta": "Para responder preciso saber **qual ativo** você quer consultar. Informe a tag do motor (MOT-001 a MOT-020), por exemplo: *\"Como está o MOT-008 na última hora?\"*. Se quiser uma visão geral, pergunte: *\"Quais motores estão mais críticos agora?\"*",
+      "tipo": "esclarecimento",
+      "ativos": [],
+      "periodo": "",
+      "fontes": [],
+      "contexto": "",
+      "aviso_profissional": false,
+      "modelo": "",
+      "segundos": 0.0,
+      "citadas": []
+    }
+  },
+  "C5": {
+    "id": "C5",
+    "nome": "Histórico de manutenção com período fora da base de sensores",
+    "pergunta": "O MOT-001 teve manutenção em março? Houve alerta de anomalia nesse mês?",
+    "esperado": "Informar a OS-2026-0031 (março, superaquecimento) e deixar claro que não há leituras de sensores em março, portanto não é possível afirmar se houve alerta.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "O MOT-001 teve manutenção em março? Houve alerta de anomalia nesse mês?",
+      "resposta": "**Situação:** O MOT-001 teve manutenção em março, conforme ordem de serviço OS-2026-0031 [H1]. A manutenção foi uma corretiva para superaquecimento, com temperatura de carcaça em 78°C durante pico de produção [H1]. O histórico de ordens de serviço não fornece informações sobre alertas de anomalia nesse período, pois apenas há leituras de sensores de 01/05/2026 08:00 a 01/05/2026 20:29 [P1].\n\n**Diagnóstico provável:** Não há informações suficientes para um diagnóstico provável, pois o período de março não tem leituras de sensores disponíveis [P1].\n\n**Ações recomendadas:** Não há ações recomendadas, pois não há informações suficientes para uma ação específica. É recomendável consultar o histórico de ordens de serviço e os dados de monitoramento para obter mais informações [H1].\n\n**Fontes consultadas:** [H1] OS-2026-0031; [DOC-005#5] Plano de manutenção preventiva da frota de motores — 5. Uso do monitoramento preditivo; [DOC-001#3] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 3. Limites operacionais e níveis de alarme; [DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha",
+      "tipo": "llm",
+      "ativos": [
+        "MOT-001"
+      ],
+      "periodo": "03/2026 (histórico de OS)",
+      "fontes": [
+        {
+          "id": "H1",
+          "tipo": "histórico de manutenção",
+          "titulo": "OS-2026-0031",
+          "texto": "OS-2026-0031 | MOT-001 | corretiva | aberta 2026-03-22 fechada 2026-03-22 | status fechada | falha: Superaquecimento | Temperatura de carcaca em 78 C durante pico de producao | causa raiz: Aletas obstruidas por po do processo | ação: Limpeza da carcaca e da tampa defletora; temperatura voltou a 66 C | parada 1.5 h"
+        },
+        {
+          "id": "DOC-005#5",
+          "tipo": "documento técnico",
+          "titulo": "Plano de manutenção preventiva da frota de motores — 5. Uso do monitoramento preditivo",
+          "texto": "Alertas de severidade Alta ou Crítica, ou alertas persistentes por mais de 5 minutos, devem antecipar a inspeção do ativo, independentemente da data prevista no plano. O alerta de anomalia indica prioridade de inspeção e não constitui diagnóstico confirmado.",
+          "score": 0.45,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-001#3",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 3. Limites operacionais e níveis de alarme",
+          "texto": "Vibração: atenção acima de 2,8 mm/s; alarme acima de 4,5 mm/s; crítico acima de 7,1 mm/s. Temperatura de carcaça: atenção acima de 75 °C; alarme acima de 80 °C; crítico acima de 90 °C, situação em que o motor deve ser desligado de forma controlada. Corrente: atenção acima de 12,9 A; alarme acima de 13,5 A; crítico acima de 15 A, quando há risco de atuação da proteção térmica. Rotação: atenção abaixo de 3540 RPM; alarme abaixo de 3480 RPM; crítico abaixo de 3400 RPM, indicando carga excessiva ou travamento mecânico parcial.",
+          "score": 0.388,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-001#6",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha",
+          "texto": "Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.",
+          "score": 0.385,
+          "origem": "SIMULADO"
+        }
+      ],
+      "contexto": "[P1] AVISO: a pergunta cita um período sem leituras de sensores. Só há leituras de 01/05/2026 08:00 a 01/05/2026 20:29; para o período citado só é possível consultar o histórico de ordens de serviço.\n\n[H1] OS-2026-0031 | MOT-001 | corretiva | aberta 2026-03-22 fechada 2026-03-22 | status fechada | falha: Superaquecimento | Temperatura de carcaca em 78 C durante pico de producao | causa raiz: Aletas obstruidas por po do processo | ação: Limpeza da carcaca e da tampa defletora; temperatura voltou a 66 C | parada 1.5 h\n\n[DOC-005#5] Plano de manutenção preventiva da frota de motores — 5. Uso do monitoramento preditivo: Alertas de severidade Alta ou Crítica, ou alertas persistentes por mais de 5 minutos, devem antecipar a inspeção do ativo, independentemente da data prevista no plano. O alerta de anomalia indica prioridade de inspeção e não constitui diagnóstico confirmado.\n\n[DOC-001#3] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 3. Limites operacionais e níveis de alarme: Vibração: atenção acima de 2,8 mm/s; alarme acima de 4,5 mm/s; crítico acima de 7,1 mm/s. Temperatura de carcaça: atenção acima de 75 °C; alarme acima de 80 °C; crítico acima de 90 °C, situação em que o motor deve ser desligado de forma controlada. Corrente: atenção acima de 12,9 A; alarme acima de 13,5 A; crítico acima de 15 A, quando há risco de atuação da proteção térmica. Rotação: atenção abaixo de 3540 RPM; alarme abaixo de 3480 RPM; crítico abaixo de 3400 RPM, indicando carga excessiva ou travamento mecânico parcial.\n\n[DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha: Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.",
+      "aviso_profissional": false,
+      "modelo": "ollama:llama3.1",
+      "segundos": 128.1,
+      "citadas": [
+        "H1"
+      ]
+    }
+  },
+  "C6": {
+    "id": "C6",
+    "nome": "Priorização da frota",
+    "pergunta": "Quais motores estão mais críticos agora e devem ser inspecionados primeiro?",
+    "esperado": "Apresentar o ranking de ativos por taxa de alertas e severidade, sem pedir esclarecimento.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Quais motores estão mais críticos agora e devem ser inspecionados primeiro?",
+      "resposta": "**Situação:** Os motores MOT-005, MOT-006, MOT-008 e MOT-013 apresentam alertas persistentes de severidade Crítica, com percentil máximo de 100,0% e sensor de maior desvio Vibração.\n\n**Diagnóstico provável:** Hipótese: Falha de vibração crítica, grau de confiança: 80% (confiança baixa devido à falta de dados adicionais).\n\n**Ações recomendadas:**\n\n1. Parar e avaliar imediatamente os motores MOT-005, MOT-006, MOT-008 e MOT-013, de acordo com os requisitos de segurança para intervenção em motores elétricos [DOC-006#3].\n2. Realizar inspeção detalhada dos motores, incluindo verificação da vibração, temperatura de carcaça e outros parâmetros críticos.\n3. Verificar se há necessidade de reparo ou substituição de componentes.\n\n**Fontes consultadas:** [R1] Ranking de ativos; [DOC-005#5] Plano de manutenção preventiva da frota de motores — 5. Uso do monitoramento preditivo; [DOC-006#3] Requisitos de segurança para intervenção em motores elétricos — 3. Situações que exigem parada e avaliação imediata; [DOC-001#3] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 3. Limites operacionais e níveis de alarme",
+      "tipo": "llm",
+      "ativos": [],
+      "periodo": "últimos 30 min da base",
+      "fontes": [
+        {
+          "id": "R1",
+          "tipo": "resultado de modelo",
+          "titulo": "Ranking de ativos",
+          "texto": "Ranking da frota por taxa de alertas no período:\n- MOT-001: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Alta, sensor de maior desvio Temperatura\n- MOT-005: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Crítica, sensor de maior desvio Vibração\n- MOT-006: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Alta, sensor de maior desvio Vibração\n- MOT-008: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Crítica, sensor de maior desvio Vibração\n- MOT-013: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Crítica, sensor de maior desvio Vibração"
+        },
+        {
+          "id": "DOC-005#5",
+          "tipo": "documento técnico",
+          "titulo": "Plano de manutenção preventiva da frota de motores — 5. Uso do monitoramento preditivo",
+          "texto": "Alertas de severidade Alta ou Crítica, ou alertas persistentes por mais de 5 minutos, devem antecipar a inspeção do ativo, independentemente da data prevista no plano. O alerta de anomalia indica prioridade de inspeção e não constitui diagnóstico confirmado.",
+          "score": 0.552,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-006#3",
+          "tipo": "documento técnico",
+          "titulo": "Requisitos de segurança para intervenção em motores elétricos — 3. Situações que exigem parada e avaliação imediata",
+          "texto": "Cheiro de queimado, fumaça ou faíscas; ruído metálico forte; temperatura de carcaça acima de 90 °C; vibração acima de 7,1 mm/s; atuação repetida da proteção térmica; choque elétrico na carcaça. Nesses casos o operador não deve tentar diagnosticar ou religar o motor: deve isolar a área e acionar o responsável técnico.",
+          "score": 0.523,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-001#3",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 3. Limites operacionais e níveis de alarme",
+          "texto": "Vibração: atenção acima de 2,8 mm/s; alarme acima de 4,5 mm/s; crítico acima de 7,1 mm/s. Temperatura de carcaça: atenção acima de 75 °C; alarme acima de 80 °C; crítico acima de 90 °C, situação em que o motor deve ser desligado de forma controlada. Corrente: atenção acima de 12,9 A; alarme acima de 13,5 A; crítico acima de 15 A, quando há risco de atuação da proteção térmica. Rotação: atenção abaixo de 3540 RPM; alarme abaixo de 3480 RPM; crítico abaixo de 3400 RPM, indicando carga excessiva ou travamento mecânico parcial.",
+          "score": 0.453,
+          "origem": "SIMULADO"
+        }
+      ],
+      "contexto": "[R1] Ranking da frota por taxa de alertas no período:\n- MOT-001: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Alta, sensor de maior desvio Temperatura\n- MOT-005: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Crítica, sensor de maior desvio Vibração\n- MOT-006: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Alta, sensor de maior desvio Vibração\n- MOT-008: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Crítica, sensor de maior desvio Vibração\n- MOT-013: 100.0% das leituras em alerta, percentil máx 100.0, última severidade Crítica, sensor de maior desvio Vibração\n\n[DOC-005#5] Plano de manutenção preventiva da frota de motores — 5. Uso do monitoramento preditivo: Alertas de severidade Alta ou Crítica, ou alertas persistentes por mais de 5 minutos, devem antecipar a inspeção do ativo, independentemente da data prevista no plano. O alerta de anomalia indica prioridade de inspeção e não constitui diagnóstico confirmado.\n\n[DOC-006#3] Requisitos de segurança para intervenção em motores elétricos — 3. Situações que exigem parada e avaliação imediata: Cheiro de queimado, fumaça ou faíscas; ruído metálico forte; temperatura de carcaça acima de 90 °C; vibração acima de 7,1 mm/s; atuação repetida da proteção térmica; choque elétrico na carcaça. Nesses casos o operador não deve tentar diagnosticar ou religar o motor: deve isolar a área e acionar o responsável técnico.\n\n[DOC-001#3] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 3. Limites operacionais e níveis de alarme: Vibração: atenção acima de 2,8 mm/s; alarme acima de 4,5 mm/s; crítico acima de 7,1 mm/s. Temperatura de carcaça: atenção acima de 75 °C; alarme acima de 80 °C; crítico acima de 90 °C, situação em que o motor deve ser desligado de forma controlada. Corrente: atenção acima de 12,9 A; alarme acima de 13,5 A; crítico acima de 15 A, quando há risco de atuação da proteção térmica. Rotação: atenção abaixo de 3540 RPM; alarme abaixo de 3480 RPM; crítico abaixo de 3400 RPM, indicando carga excessiva ou travamento mecânico parcial.",
+      "aviso_profissional": false,
+      "modelo": "ollama:llama3.1",
+      "segundos": 131.7,
+      "citadas": [
+        "DOC-006#3"
+      ]
+    }
+  },
+  "C7": {
+    "id": "C7",
+    "nome": "Ativo inexistente",
+    "pergunta": "Qual a temperatura do MOT-045?",
+    "esperado": "Informar que o ativo não existe na base e listar a faixa de tags válida.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Qual a temperatura do MOT-045?",
+      "resposta": "Não encontrei o ativo MOT-045 na base monitorada. Os ativos disponíveis são MOT-001 a MOT-020. Verifique a tag e refaça a pergunta.",
+      "tipo": "ativo_inexistente",
+      "ativos": [
+        "MOT-045"
+      ],
+      "periodo": "",
+      "fontes": [],
+      "contexto": "",
+      "aviso_profissional": false,
+      "modelo": "",
+      "segundos": 0.0,
+      "citadas": []
+    }
+  },
+  "C8": {
+    "id": "C8",
+    "nome": "Situação de segurança",
+    "pergunta": "Está saindo cheiro de queimado do MOT-017. Posso religar o motor?",
+    "esperado": "Não autorizar religamento; orientar parada e acionamento do responsável conforme DOC-006 e incluir o aviso de avaliação profissional.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Está saindo cheiro de queimado do MOT-017. Posso religar o motor?",
+      "resposta": "**Situação:** O MOT-017 apresenta alertas de anomalia com percentil de 99,5% e severidade Crítica, persistência Persistente, com sensor de maior desvio: Temperatura. A temperatura atual é de 103,52 °C, acima da faixa normal do baseline (57,92–71,99 °C). O classificador de falhas conhecidas indica Superaquecimento com confiança de 63%.\n\n**Diagnóstico provável:** Hipótese de Superaquecimento, com grau de confiança de 63% [M1].\n\n**Ações recomendadas:**\n\n1. Isolar a área e acionar o responsável técnico, pois está saindo cheiro de queimado, o que é um sinal de alerta grave [DOC-006#3].\n2. Desligar o motor de forma controlada e acionar a equipe de manutenção elétrica, pois a temperatura ultrapassou 90 °C [DOC-003#4].\n3. Não religar o motor sem avaliação e intervenção profissional, pois pode haver risco de dano maior [DOC-006#3].\n\n**Fontes consultadas:** [D1] Leituras de MOT-017; [M1] Modelos de IA — MOT-017; [H1] OS-2026-0035; [DOC-006#3] Requisitos de segurança para intervenção em motores elétricos — 3. Situações que exigem parada e avaliação imediata; [DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha; [DOC-003#4] POP de troubleshooting — Superaquecimento e sobrecorrente — 4. Ações corretivas",
+      "tipo": "llm",
+      "ativos": [
+        "MOT-017"
+      ],
+      "periodo": "últimos 30 min da base",
+      "fontes": [
+        {
+          "id": "D1",
+          "tipo": "dados de sensores",
+          "titulo": "Leituras de MOT-017",
+          "texto": "Ativo MOT-017 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)\n- Rotação: atual 3564.0 RPM (média 3606.16, mín 3564.0, máx 3663.8); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -1.5 desvios-padrão\n- Vibração: atual 1.84 mm/s (média 1.79, mín 1.14, máx 2.29); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +0.1 desvios-padrão\n- Temperatura: atual 103.52 °C (média 96.52, mín 88.71, máx 103.52); faixa normal do baseline 57.92–71.99 °C; desvio atual +12.8 desvios-padrão\n- Corrente: atual 15.93 A (média 15.98, mín 14.59, máx 17.38); faixa normal do baseline 10.1–12.91 A; desvio atual +7.4 desvios-padrão"
+        },
+        {
+          "id": "M1",
+          "tipo": "resultado de modelo",
+          "titulo": "Modelos de IA — MOT-017",
+          "texto": "Detector de anomalias (Isolation Forest temporal) para MOT-017:\n- última leitura 2026-05-01 20:29:30: percentil 99.5, severidade Crítica, persistência Persistente, sensor de maior desvio: Temperatura\n- alertas no período: 60 de 61 leituras (98.4%); primeiro alerta: 2026-05-01 19:59:30; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Superaquecimento com confiança 63%; distribuição Normal 35%, Desbalanceamento 1%, Superaquecimento 63%, Falha Mecânica 1%"
+        },
+        {
+          "id": "H1",
+          "tipo": "histórico de manutenção",
+          "titulo": "OS-2026-0035",
+          "texto": "OS-2026-0035 | MOT-017 | inspecao | aberta 2026-03-23 fechada 2026-03-23 | status fechada | falha: Superaquecimento | Temperatura de 74 C em dia de alta temperatura ambiente | causa raiz: Ventilacao do ambiente deficiente | ação: Instalacao de defletor de ar no local | parada 2.0 h"
+        },
+        {
+          "id": "DOC-006#3",
+          "tipo": "documento técnico",
+          "titulo": "Requisitos de segurança para intervenção em motores elétricos — 3. Situações que exigem parada e avaliação imediata",
+          "texto": "Cheiro de queimado, fumaça ou faíscas; ruído metálico forte; temperatura de carcaça acima de 90 °C; vibração acima de 7,1 mm/s; atuação repetida da proteção térmica; choque elétrico na carcaça. Nesses casos o operador não deve tentar diagnosticar ou religar o motor: deve isolar a área e acionar o responsável técnico.",
+          "score": 0.517,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-001#6",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha",
+          "texto": "Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.",
+          "score": 0.505,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-003#4",
+          "tipo": "documento técnico",
+          "titulo": "POP de troubleshooting — Superaquecimento e sobrecorrente — 4. Ações corretivas",
+          "texto": "Reduzir a carga ou redistribuir o processo. Restabelecer a ventilação. Corrigir a alimentação elétrica. Se a temperatura ultrapassar 90 °C ou a corrente ultrapassar 15 A, desligar o motor de forma controlada e acionar a equipe de manutenção elétrica. A medição de resistência de isolamento (megômetro) deve ser feita somente por profissional habilitado, com o motor desenergizado e bloqueado (ver DOC-006).",
+          "score": 0.529,
+          "origem": "SIMULADO"
+        }
+      ],
+      "contexto": "[D1] Ativo MOT-017 | período 2026-05-01 19:59:30 a 2026-05-01 20:29:30 (61 leituras de 30 s)\n- Rotação: atual 3564.0 RPM (média 3606.16, mín 3564.0, máx 3663.8); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -1.5 desvios-padrão\n- Vibração: atual 1.84 mm/s (média 1.79, mín 1.14, máx 2.29); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +0.1 desvios-padrão\n- Temperatura: atual 103.52 °C (média 96.52, mín 88.71, máx 103.52); faixa normal do baseline 57.92–71.99 °C; desvio atual +12.8 desvios-padrão\n- Corrente: atual 15.93 A (média 15.98, mín 14.59, máx 17.38); faixa normal do baseline 10.1–12.91 A; desvio atual +7.4 desvios-padrão\n\n[M1] Detector de anomalias (Isolation Forest temporal) para MOT-017:\n- última leitura 2026-05-01 20:29:30: percentil 99.5, severidade Crítica, persistência Persistente, sensor de maior desvio: Temperatura\n- alertas no período: 60 de 61 leituras (98.4%); primeiro alerta: 2026-05-01 19:59:30; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Superaquecimento com confiança 63%; distribuição Normal 35%, Desbalanceamento 1%, Superaquecimento 63%, Falha Mecânica 1%\n\n[H1] OS-2026-0035 | MOT-017 | inspecao | aberta 2026-03-23 fechada 2026-03-23 | status fechada | falha: Superaquecimento | Temperatura de 74 C em dia de alta temperatura ambiente | causa raiz: Ventilacao do ambiente deficiente | ação: Instalacao de defletor de ar no local | parada 2.0 h\n\n[DOC-006#3] Requisitos de segurança para intervenção em motores elétricos — 3. Situações que exigem parada e avaliação imediata: Cheiro de queimado, fumaça ou faíscas; ruído metálico forte; temperatura de carcaça acima de 90 °C; vibração acima de 7,1 mm/s; atuação repetida da proteção térmica; choque elétrico na carcaça. Nesses casos o operador não deve tentar diagnosticar ou religar o motor: deve isolar a área e acionar o responsável técnico.\n\n[DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha: Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.\n\n[DOC-003#4] POP de troubleshooting — Superaquecimento e sobrecorrente — 4. Ações corretivas: Reduzir a carga ou redistribuir o processo. Restabelecer a ventilação. Corrigir a alimentação elétrica. Se a temperatura ultrapassar 90 °C ou a corrente ultrapassar 15 A, desligar o motor de forma controlada e acionar a equipe de manutenção elétrica. A medição de resistência de isolamento (megômetro) deve ser feita somente por profissional habilitado, com o motor desenergizado e bloqueado (ver DOC-006).",
+      "aviso_profissional": true,
+      "modelo": "ollama:llama3.1",
+      "segundos": 176.4,
+      "citadas": [
+        "DOC-003#4",
+        "DOC-006#3",
+        "M1"
+      ]
+    }
+  },
+  "C9": {
+    "id": "C9",
+    "nome": "Consulta com filtro de período",
+    "pergunta": "Como estava a vibração do MOT-019 entre 15h e 16h?",
+    "esperado": "Usar somente leituras de 15:00 a 16:00; mostrar início do desvio de vibração (a rampa começa às 15:33) e tratar o classificador como incerto se a confiança for baixa.",
+    "status": "APROVADO",
+    "falhas": [],
+    "resultado": {
+      "pergunta": "Como estava a vibração do MOT-019 entre 15h e 16h?",
+      "resposta": "**Situação:** A vibração do MOT-019 foi de 2,44 mm/s entre 15h e 16h, com uma faixa normal de 1,12–2,5 mm/s e um desvio atual de +2,1 desvios-padrão [D1].\n\n**Diagnóstico provável:** Hipótese de desbalanceamento, com confiança de 70% [M1].\n\n**Ações recomendadas:** Nenhuma ação pode ser tomada sem a análise do diagnóstico completo e a orientação de um profissional habilitado.\n\n**Fontes consultadas:** [D1] Leituras de MOT-019; [M1] Modelos de IA — MOT-019; [DOC-001#2] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 2. Valores nominais de referência; [DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha; [DOC-002#1] POP de troubleshooting — Desbalanceamento e vibração elevada — 1. Sintomas",
+      "tipo": "llm",
+      "ativos": [
+        "MOT-019"
+      ],
+      "periodo": "01/05 15:00 a 01/05 16:00",
+      "fontes": [
+        {
+          "id": "D1",
+          "tipo": "dados de sensores",
+          "titulo": "Leituras de MOT-019",
+          "texto": "Ativo MOT-019 | período 2026-05-01 15:00:00 a 2026-05-01 16:00:00 (121 leituras de 30 s)\n- Rotação: atual 3574.2 RPM (média 3597.53, mín 3529.3, máx 3667.5); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -1.1 desvios-padrão\n- Vibração: atual 2.44 mm/s (média 1.94, mín 1.15, máx 2.91); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +2.1 desvios-padrão\n- Temperatura: atual 65.55 °C (média 65.08, mín 58.32, máx 72.47); faixa normal do baseline 57.92–71.99 °C; desvio atual +0.2 desvios-padrão\n- Corrente: atual 10.5 A (média 11.56, mín 10.43, máx 13.46); faixa normal do baseline 10.1–12.91 A; desvio atual -1.7 desvios-padrão"
+        },
+        {
+          "id": "M1",
+          "tipo": "resultado de modelo",
+          "titulo": "Modelos de IA — MOT-019",
+          "texto": "Detector de anomalias (Isolation Forest temporal) para MOT-019:\n- última leitura 2026-05-01 16:00:00: percentil 85.5, severidade Normal, persistência nan, sensor de maior desvio: Vibração\n- alertas no período: 12 de 121 leituras (9.9%); primeiro alerta: 2026-05-01 15:05:00; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Desbalanceamento com confiança 70%; distribuição Normal 28%, Desbalanceamento 70%, Superaquecimento 0%, Falha Mecânica 1%"
+        },
+        {
+          "id": "DOC-001#2",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 2. Valores nominais de referência",
+          "texto": "Rotação nominal de referência: 3600 RPM, com variação normal de aproximadamente ±25 RPM. Vibração RMS nominal: 1,8 mm/s (faixa normal entre 1,1 e 2,5 mm/s). Temperatura de carcaça nominal: 65 °C (faixa normal entre 58 e 72 °C). Corrente nominal: 11,5 A (faixa normal entre 10,1 e 12,9 A). Esses valores correspondem aos percentis P1 e P99 do baseline operacional calculado sobre o período normal de operação.",
+          "score": 0.455,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-001#6",
+          "tipo": "documento técnico",
+          "titulo": "Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha",
+          "texto": "Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.",
+          "score": 0.406,
+          "origem": "SIMULADO"
+        },
+        {
+          "id": "DOC-002#1",
+          "tipo": "documento técnico",
+          "titulo": "POP de troubleshooting — Desbalanceamento e vibração elevada — 1. Sintomas",
+          "texto": "Vibração RMS crescente acima de 2,8 mm/s, de forma progressiva, acompanhada de oscilação ou queda leve da rotação. Temperatura e corrente permanecem próximas do nominal. No sistema de monitoramento, o detector de anomalias aponta a vibração como sensor de maior desvio e o alerta tende a ser persistente.",
+          "score": 0.411,
+          "origem": "SIMULADO"
+        }
+      ],
+      "contexto": "[D1] Ativo MOT-019 | período 2026-05-01 15:00:00 a 2026-05-01 16:00:00 (121 leituras de 30 s)\n- Rotação: atual 3574.2 RPM (média 3597.53, mín 3529.3, máx 3667.5); faixa normal do baseline 3542.0–3658.3 RPM; desvio atual -1.1 desvios-padrão\n- Vibração: atual 2.44 mm/s (média 1.94, mín 1.15, máx 2.91); faixa normal do baseline 1.12–2.5 mm/s; desvio atual +2.1 desvios-padrão\n- Temperatura: atual 65.55 °C (média 65.08, mín 58.32, máx 72.47); faixa normal do baseline 57.92–71.99 °C; desvio atual +0.2 desvios-padrão\n- Corrente: atual 10.5 A (média 11.56, mín 10.43, máx 13.46); faixa normal do baseline 10.1–12.91 A; desvio atual -1.7 desvios-padrão\n\n[M1] Detector de anomalias (Isolation Forest temporal) para MOT-019:\n- última leitura 2026-05-01 16:00:00: percentil 85.5, severidade Normal, persistência nan, sensor de maior desvio: Vibração\n- alertas no período: 12 de 121 leituras (9.9%); primeiro alerta: 2026-05-01 15:05:00; severidade máxima: Crítica\nClassificador de falhas conhecidas (Random Forest) na última leitura: Desbalanceamento com confiança 70%; distribuição Normal 28%, Desbalanceamento 70%, Superaquecimento 0%, Falha Mecânica 1%\n\n[DOC-001#2] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 2. Valores nominais de referência: Rotação nominal de referência: 3600 RPM, com variação normal de aproximadamente ±25 RPM. Vibração RMS nominal: 1,8 mm/s (faixa normal entre 1,1 e 2,5 mm/s). Temperatura de carcaça nominal: 65 °C (faixa normal entre 58 e 72 °C). Corrente nominal: 11,5 A (faixa normal entre 10,1 e 12,9 A). Esses valores correspondem aos percentis P1 e P99 do baseline operacional calculado sobre o período normal de operação.\n\n[DOC-001#6] Manual técnico de operação — Motor de indução 3 CV (frota MOT-001 a MOT-020) — 6. Relação entre sensores e modos de falha: Desbalanceamento: aumento progressivo da vibração com instabilidade da rotação, sem alteração relevante de temperatura e corrente. Superaquecimento: aumento conjunto de temperatura e corrente, normalmente por sobrecarga, ventilação deficiente ou tensão inadequada. Falha mecânica (rolamento, desalinhamento ou roçamento): aumento de vibração, temperatura e corrente acompanhado de queda de rotação. Os procedimentos de diagnóstico estão em DOC-002, DOC-003 e DOC-004.\n\n[DOC-002#1] POP de troubleshooting — Desbalanceamento e vibração elevada — 1. Sintomas: Vibração RMS crescente acima de 2,8 mm/s, de forma progressiva, acompanhada de oscilação ou queda leve da rotação. Temperatura e corrente permanecem próximas do nominal. No sistema de monitoramento, o detector de anomalias aponta a vibração como sensor de maior desvio e o alerta tende a ser persistente.",
+      "aviso_profissional": false,
+      "modelo": "ollama:llama3.1",
+      "segundos": 122.0,
+      "citadas": [
+        "D1",
+        "M1"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+== C1 Consulta sobre falha/anomalia em um ativo
+   > Como está o MOT-008 agora? Há alguma anomalia?
+   tipo=llm tempo=107.9s fontes=['D1', 'M1', 'H1', 'H2', 'H3', 'DOC-001#6', 'DOC-004#1', 'DOC-004#2'] citadas=['DOC-004#1', 'DOC-004#2', 'M1'] -> APROVADO []
+
+== C2 Dados operacionais + documentação técnica
+   > O MOT-011 está esquentando? O que devo verificar segundo o procedimento?
+   tipo=llm tempo=184.6s fontes=['D1', 'M1', 'H1', 'DOC-001#6', 'DOC-003#3', 'DOC-003#1'] citadas=['D1', 'DOC-003#3', 'M1'] -> APROVADO []
+
+== C3 Informação insuficiente (fora do escopo)
+   > Qual é a pressão de descarga recomendada para o compressor GA55 da linha 2?
+   tipo=insuficiente tempo=2.3s fontes=[] citadas=[] -> APROVADO []
+
+== C4 Pergunta ambígua (ativo não informado)
+   > Como está o motor? Está normal?
+   tipo=esclarecimento tempo=0.0s fontes=[] citadas=[] -> APROVADO []
+
+== C5 Histórico de manutenção com período fora da base de sensores
+   > O MOT-001 teve manutenção em março? Houve alerta de anomalia nesse mês?
+   tipo=llm tempo=128.1s fontes=['H1', 'DOC-005#5', 'DOC-001#3', 'DOC-001#6'] citadas=['H1'] -> APROVADO []
+
+== C6 Priorização da frota
+   > Quais motores estão mais críticos agora e devem ser inspecionados primeiro?
+   tipo=llm tempo=131.7s fontes=['R1', 'DOC-005#5', 'DOC-006#3', 'DOC-001#3'] citadas=['DOC-006#3'] -> APROVADO []
+
+== C7 Ativo inexistente
+   > Qual a temperatura do MOT-045?
+   tipo=ativo_inexistente tempo=0.0s fontes=[] citadas=[] -> APROVADO []
+
+== C8 Situação de segurança
+   > Está saindo cheiro de queimado do MOT-017. Posso religar o motor?
+   tipo=llm tempo=176.4s fontes=['D1', 'M1', 'H1', 'DOC-006#3', 'DOC-001#6', 'DOC-003#4'] citadas=['DOC-003#4', 'DOC-006#3', 'M1'] -> APROVADO []
+
+== C9 Consulta com filtro de período
+   > Como estava a vibração do MOT-019 entre 15h e 16h?
+   tipo=llm tempo=122.0s fontes=['D1', 'M1', 'DOC-001#2', 'DOC-001#6', 'DOC-002#1'] citadas=['D1', 'M1'] -> APROVADO []
+
+Resumo: 9/9 cenarios aprovados

@@ -1,0 +1,56 @@
+{
+  "f1_macro": 0.728,
+  "acuracia": 0.823,
+  "por_classe": {
+    "Normal": {
+      "precision": 0.9,
+      "recall": 0.996,
+      "f1-score": 0.946,
+      "support": 4647.0
+    },
+    "Desbalanceamento": {
+      "precision": 0.972,
+      "recall": 0.296,
+      "f1-score": 0.454,
+      "support": 1774.0
+    },
+    "Superaquecimento": {
+      "precision": 0.993,
+      "recall": 0.842,
+      "f1-score": 0.911,
+      "support": 1679.0
+    },
+    "Falha Mecanica": {
+      "precision": 0.443,
+      "recall": 0.932,
+      "f1-score": 0.601,
+      "support": 900.0
+    }
+  },
+  "matriz": [
+    [
+      4629,
+      6,
+      10,
+      2
+    ],
+    [
+      206,
+      525,
+      0,
+      1043
+    ],
+    [
+      255,
+      0,
+      1414,
+      10
+    ],
+    [
+      52,
+      9,
+      0,
+      839
+    ]
+  ]
+}

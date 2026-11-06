@@ -1,0 +1,128 @@
+{
+  "metricas": {
+    "pontual": {
+      "limiar": 0.5493,
+      "acuracia": 0.935,
+      "precisao": 0.948,
+      "recall": 0.915,
+      "f1": 0.931,
+      "roc_auc": 0.973,
+      "pr_auc": 0.979,
+      "matriz": [
+        [
+          4429,
+          218
+        ],
+        [
+          371,
+          3982
+        ]
+      ],
+      "taxa_falso_alerta": 0.0469
+    },
+    "temporal": {
+      "limiar": 0.4944,
+      "acuracia": 0.949,
+      "precisao": 0.954,
+      "recall": 0.939,
+      "f1": 0.947,
+      "roc_auc": 0.982,
+      "pr_auc": 0.983,
+      "matriz": [
+        [
+          4450,
+          197
+        ],
+        [
+          265,
+          4088
+        ]
+      ],
+      "taxa_falso_alerta": 0.0424
+    }
+  },
+  "baseline": {
+    "rotacao": {
+      "unidade": "RPM",
+      "media": 3600.37,
+      "desvio": 24.89,
+      "p1": 3542.0,
+      "p99": 3658.3
+    },
+    "vibracao": {
+      "unidade": "mm/s",
+      "media": 1.8,
+      "desvio": 0.3,
+      "p1": 1.12,
+      "p99": 2.5
+    },
+    "temperatura": {
+      "unidade": "°C",
+      "media": 65.01,
+      "desvio": 3.0,
+      "p1": 57.92,
+      "p99": 71.99
+    },
+    "corrente": {
+      "unidade": "A",
+      "media": 11.49,
+      "desvio": 0.6,
+      "p1": 10.1,
+      "p99": 12.91
+    }
+  },
+  "particoes": {
+    "treino": 16500,
+    "calibracao_normal": 3743,
+    "teste": 9000
+  },
+  "alertas_teste": 4285,
+  "persistencia": {
+    "Persistente": 3943,
+    "Pontual": 208,
+    "Curta": 134
+  },
+  "sensor_principal_alertas": {
+    "vibracao": 2538,
+    "temperatura": 1381,
+    "corrente": 265,
+    "rotacao": 101
+  },
+  "top5_ranking": [
+    {
+      "tag": "MOT-008",
+      "alertas": 450,
+      "leituras": 450,
+      "sensor": "vibracao",
+      "taxa": 100.0
+    },
+    {
+      "tag": "MOT-019",
+      "alertas": 442,
+      "leituras": 450,
+      "sensor": "vibracao",
+      "taxa": 98.2
+    },
+    {
+      "tag": "MOT-005",
+      "alertas": 439,
+      "leituras": 450,
+      "sensor": "vibracao",
+      "taxa": 97.6
+    },
+    {
+      "tag": "MOT-006",
+      "alertas": 439,
+      "leituras": 450,
+      "sensor": "vibracao",
+      "taxa": 97.6
+    },
+    {
+      "tag": "MOT-001",
+      "alertas": 437,
+      "leituras": 450,
+      "sensor": "temperatura",
+      "taxa": 97.1
+    }
+  ]
+}

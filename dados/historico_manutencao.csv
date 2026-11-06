@@ -1,0 +1,24 @@
+os_id,tag,data_abertura,data_fechamento,tipo,falha_relacionada,descricao,causa_raiz,acao,horas_parada,status,origem
+OS-2026-0012,MOT-001,2026-01-14,2026-01-14,preventiva,-,Inspecao mensal: limpeza de aletas e termografia,-,Limpeza das aletas; termografia sem pontos quentes,0.5,fechada,SIMULADO
+OS-2026-0031,MOT-001,2026-03-22,2026-03-22,corretiva,Superaquecimento,Temperatura de carcaca em 78 C durante pico de producao,Aletas obstruidas por po do processo,Limpeza da carcaca e da tampa defletora; temperatura voltou a 66 C,1.5,fechada,SIMULADO
+OS-2026-0015,MOT-002,2026-01-20,2026-01-20,preventiva,-,Relubrificacao dos rolamentos (4000 h),-,Relubrificacao conforme DOC-005,1.0,fechada,SIMULADO
+OS-2026-0019,MOT-003,2026-02-03,2026-02-04,corretiva,Superaquecimento,Atuacao da protecao termica apos aumento de carga,Sobrecarga da bomba acionada,Regulagem da valvula de descarga; corrente normalizada em 11.6 A,6.0,fechada,SIMULADO
+OS-2026-0044,MOT-004,2026-04-08,2026-04-08,preventiva,-,Inspecao mensal sem anormalidades,-,Registro de vibracao 1.7 mm/s,0.5,fechada,SIMULADO
+OS-2026-0021,MOT-005,2026-02-11,2026-02-11,inspecao,Desbalanceamento,Vibracao de 3.1 mm/s observada em ronda,Acumulo de sujeira no ventilador,Limpeza do ventilador; vibracao reduziu para 1.9 mm/s,1.0,fechada,SIMULADO
+OS-2026-0027,MOT-006,2026-03-02,2026-03-03,corretiva,Desbalanceamento,Vibracao elevada e oscilacao de rotacao,Polia com desgaste irregular,Substituicao da polia e balanceamento dinamico,8.0,fechada,SIMULADO
+OS-2026-0038,MOT-007,2026-03-29,2026-03-29,preventiva,-,Relubrificacao e reaperto de base,-,Relubrificacao conforme DOC-005,1.0,fechada,SIMULADO
+OS-2026-0009,MOT-008,2026-01-09,2026-01-10,corretiva,Falha Mecanica,Ruido metalico no mancal dianteiro e vibracao de 5.2 mm/s,Rolamento dianteiro com pista danificada,Substituicao do rolamento dianteiro (6205-2Z),10.0,fechada,SIMULADO
+OS-2026-0036,MOT-008,2026-03-25,2026-03-25,inspecao,Falha Mecanica,Vibracao axial acima do historico em coleta mensal,Desalinhamento de 0.12 mm no acoplamento,Realinhamento a laser; vibracao 2.0 mm/s apos ajuste,3.0,fechada,SIMULADO
+OS-2026-0049,MOT-008,2026-04-28,,preventiva,-,Relubrificacao programada,-,Aguardando janela de parada,0.0,aberta,SIMULADO
+OS-2026-0017,MOT-009,2026-01-27,2026-01-27,preventiva,-,Inspecao mensal sem anormalidades,-,Registro de vibracao 1.8 mm/s,0.5,fechada,SIMULADO
+OS-2026-0024,MOT-010,2026-02-19,2026-02-19,preventiva,-,Revisao anual: isolamento e alinhamento,-,Isolamento 850 MOhm; alinhamento dentro da tolerancia,4.0,fechada,SIMULADO
+OS-2026-0029,MOT-011,2026-03-10,2026-03-11,corretiva,Superaquecimento,Corrente de 13.8 A e temperatura de 81 C,Tensao de alimentacao 9% abaixo da nominal,Correcao do tap do transformador pela equipe eletrica,5.0,fechada,SIMULADO
+OS-2026-0041,MOT-012,2026-04-02,2026-04-02,preventiva,-,Relubrificacao dos rolamentos,-,Relubrificacao conforme DOC-005,1.0,fechada,SIMULADO
+OS-2026-0033,MOT-013,2026-03-17,2026-03-17,inspecao,Desbalanceamento,Oscilacao de rotacao em ronda,Parafusos da base frouxos,Reaperto da base com torque especificado,1.0,fechada,SIMULADO
+OS-2026-0011,MOT-014,2026-01-12,2026-01-13,corretiva,Falha Mecanica,Queda de rotacao e aquecimento do mancal traseiro,Falta de lubrificacao no rolamento traseiro,Substituicao do rolamento traseiro e relubrificacao,9.0,fechada,SIMULADO
+OS-2026-0046,MOT-015,2026-04-15,2026-04-15,preventiva,-,Inspecao mensal sem anormalidades,-,Registro de vibracao 1.6 mm/s,0.5,fechada,SIMULADO
+OS-2026-0039,MOT-016,2026-03-31,2026-03-31,preventiva,-,Termografia da caixa de ligacao,-,Sem pontos quentes,0.5,fechada,SIMULADO
+OS-2026-0035,MOT-017,2026-03-23,2026-03-23,inspecao,Superaquecimento,Temperatura de 74 C em dia de alta temperatura ambiente,Ventilacao do ambiente deficiente,Instalacao de defletor de ar no local,2.0,fechada,SIMULADO
+OS-2026-0022,MOT-018,2026-02-13,2026-02-13,preventiva,-,Relubrificacao dos rolamentos,-,Relubrificacao conforme DOC-005,1.0,fechada,SIMULADO
+OS-2026-0026,MOT-019,2026-02-26,2026-02-27,corretiva,Desbalanceamento,Vibracao de 4.8 mm/s com ruido ciclico,Ventilador trincado,Substituicao do ventilador,6.0,fechada,SIMULADO
+OS-2026-0047,MOT-020,2026-04-21,2026-04-21,preventiva,-,Inspecao mensal sem anormalidades,-,Registro de vibracao 1.8 mm/s,0.5,fechada,SIMULADO

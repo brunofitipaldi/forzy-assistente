@@ -1,0 +1,166 @@
+{
+  "hit@1": 0.625,
+  "hit@3": 0.812,
+  "mrr": 0.719,
+  "n_positivas": 16,
+  "detalhes": [
+    {
+      "consulta": "o motor esta esquentando muito, o que verificar?",
+      "esperado": "DOC-003",
+      "posicao": 1,
+      "top1": "DOC-003",
+      "score_top1": 0.534,
+      "melhor_score": 0.534
+    },
+    {
+      "consulta": "corrente acima do nominal e temperatura subindo",
+      "esperado": "DOC-003",
+      "posicao": 1,
+      "top1": "DOC-003",
+      "score_top1": 0.644,
+      "melhor_score": 0.644
+    },
+    {
+      "consulta": "como resolver vibracao alta com rotacao oscilando",
+      "esperado": "DOC-002",
+      "posicao": 1,
+      "top1": "DOC-002",
+      "score_top1": 0.588,
+      "melhor_score": 0.662
+    },
+    {
+      "consulta": "quando fazer balanceamento dinamico do rotor",
+      "esperado": "DOC-002",
+      "posicao": 1,
+      "top1": "DOC-002",
+      "score_top1": 0.547,
+      "melhor_score": 0.547
+    },
+    {
+      "consulta": "ruido metalico no mancal, o que pode ser",
+      "esperado": "DOC-004",
+      "posicao": 1,
+      "top1": "DOC-004",
+      "score_top1": 0.511,
+      "melhor_score": 0.511
+    },
+    {
+      "consulta": "queda de rotacao com vibracao e aquecimento",
+      "esperado": "DOC-004",
+      "posicao": 2,
+      "top1": "DOC-001",
+      "score_top1": 0.541,
+      "melhor_score": 0.546
+    },
+    {
+      "consulta": "tolerancia de alinhamento do acoplamento",
+      "esperado": "DOC-001",
+      "posicao": 2,
+      "top1": "DOC-004",
+      "score_top1": 0.39,
+      "melhor_score": 0.438
+    },
+    {
+      "consulta": "quais sao os limites de alarme de temperatura",
+      "esperado": "DOC-001",
+      "posicao": 1,
+      "top1": "DOC-001",
+      "score_top1": 0.564,
+      "melhor_score": 0.564
+    },
+    {
+      "consulta": "de quanto em quanto tempo relubrificar os rolamentos",
+      "esperado": "DOC-005",
+      "posicao": 1,
+      "top1": "DOC-005",
+      "score_top1": 0.652,
+      "melhor_score": 0.652
+    },
+    {
+      "consulta": "o que fazer se sair fumaca do motor",
+      "esperado": "DOC-006",
+      "posicao": 1,
+      "top1": "DOC-006",
+      "score_top1": 0.429,
+      "melhor_score": 0.429
+    },
+    {
+      "consulta": "quem pode medir o isolamento do enrolamento",
+      "esperado": "DOC-006",
+      "posicao": null,
+      "top1": "DOC-004",
+      "score_top1": 0.388,
+      "melhor_score": 0.388
+    },
+    {
+      "consulta": "o que significa severidade critica no alerta",
+      "esperado": "DOC-007",
+      "posicao": 1,
+      "top1": "DOC-007",
+      "score_top1": 0.633,
+      "melhor_score": 0.633
+    },
+    {
+      "consulta": "o percentil de anomalia e probabilidade de falha?",
+      "esperado": "DOC-007",
+      "posicao": 1,
+      "top1": "DOC-007",
+      "score_top1": 0.669,
+      "melhor_score": 0.669
+    },
+    {
+      "consulta": "troca de rolamento no historico",
+      "esperado": "OS-2026-0009",
+      "posicao": null,
+      "top1": "-",
+      "score_top1": 0,
+      "melhor_score": 0.365
+    },
+    {
+      "consulta": "houve problema de tensao de alimentacao",
+      "esperado": "OS-2026-0029",
+      "posicao": 2,
+      "top1": "DOC-003",
+      "score_top1": 0.413,
+      "melhor_score": 0.413
+    },
+    {
+      "consulta": "ventilador trincado",
+      "esperado": "OS-2026-0026",
+      "posicao": null,
+      "top1": "DOC-002",
+      "score_top1": 0.438,
+      "melhor_score": 0.438
+    }
+  ],
+  "negativas": [
+    {
+      "consulta": "qual a pressao de descarga do compressor GA55?",
+      "melhor_score": 0.337
+    },
+    {
+      "consulta": "quanto custa um motor novo?",
+      "melhor_score": 0.316
+    },
+    {
+      "consulta": "receita de bolo de cenoura",
+      "melhor_score": 0.18
+    },
+    {
+      "consulta": "qual o consumo de oleo do redutor da esteira 3?",
+      "melhor_score": 0.375
+    },
+    {
+      "consulta": "quem ganhou o jogo de ontem?",
+      "melhor_score": 0.226
+    },
+    {
+      "consulta": "qual a previsao do tempo para amanha?",
+      "melhor_score": 0.271
+    }
+  ],
+  "menor_score_positivo": 0.365,
+  "maior_score_negativo": 0.375,
+  "limiar_usado": 0.38,
+  "negativas_bloqueadas": 6
+}
